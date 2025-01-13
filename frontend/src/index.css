@@ -1,0 +1,117 @@
+/* พื้นหลังและฟอนต์หลัก */
+body {
+  background-color: #f0f9ff;
+  /* สีฟ้าสว่าง */
+  font-family: 'Poppins', sans-serif;
+  /* ใช้ฟอนต์จาก Google Fonts */
+  color: #333;
+}
+
+textarea {
+  resize: none;
+}
+
+.sidebar {
+  height: 100vh;
+  position: sticky;
+  top: 0;
+}
+
+.sidebar .nav-link {
+  text-align: left;
+  width: 100%;
+  padding: 10px 15px;
+  border-radius: 4px;
+  transition: background-color 0.2s;
+}
+
+.sidebar .nav-link.active {
+  background-color: #0d6efd;
+  color: white;
+}
+
+.sidebar .nav-link:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.sidebar hr {
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Card Style */
+.card {
+  border: none;
+  border-radius: 10px;
+  background-color: #ffffff;
+  /* สีพื้นหลังขาว */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  /* เงา */
+}
+
+/* Table Header */
+.table th {
+  background-color: #4fc3f7;
+  /* สีหัวตาราง */
+  color: #ffffff;
+  font-weight: bold;
+}
+
+.form-select-sm {
+  width: 120px;
+}
+
+/* Table Rows */
+.table-striped tbody tr:nth-of-type(odd) {
+  background-color: #e3f7fc;
+  /* แถบสีฟ้าสลับ */
+}
+
+/* Button Style */
+.btn-primary {
+  background-color: #4fc3f7;
+  border-color: #4fc3f7;
+  color: #fff;
+  font-weight: bold;
+}
+
+.btn-primary:hover {
+  background-color: #0288d1;
+  border-color: #0288d1;
+}
+
+.list-group-item {
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+h1 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+
+
+footer {
+  background-color: #343a40;
+  /* สีพื้นหลัง (Dark) */
+  color: #ffffff;
+  /* สีข้อความ (White) */
+  font-size: 14px;
+  /* ขนาดข้อความ */
+}
+
+footer a {
+  color: #17a2b8;
+  /* สีลิงก์ (Bootstrap Info Color) */
+  transition: color 0.2s ease-in-out;
+}
+
+footer a:hover {
+  color: #ffffff;
+  /* สีลิงก์เมื่อ Hover */
+}
+
+footer p {
+  margin-bottom: 0;
+  /* จัดการระยะห่าง */
+}

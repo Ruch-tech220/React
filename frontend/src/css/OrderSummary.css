@@ -1,0 +1,61 @@
+/* ---------- Theme Styles (Dark/Light) ---------- */
+.order-summary-page {
+  min-height: 100vh; /* ให้หน้าเต็มจอ */
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.order-summary-page.light-mode {
+  background-color: #ffffff;
+  color: #212529;
+}
+
+.order-summary-page.dark-mode {
+  background-color: #2d2d2d;
+  color: #f8f9fa;
+}
+
+/* main-content ช่วยขยายเนื้อหาหลักดัน Footer ไปด้านล่าง (ถ้ามี) */
+.main-content {
+  flex: 1;
+}
+
+/* ---------- Header Section ---------- */
+.header-section {
+  position: relative;
+  overflow: hidden;
+}
+
+/* หากต้องการ overlay เพิ่มความเข้มพื้นหลัง */
+.order-summary-header-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 1;
+}
+
+.overlay-text {
+  z-index: 2;
+}
+
+/* ---------- Order Summary Card ---------- */
+.order-summary-card {
+  border-radius: 8px;
+}
+
+/* ปรับสี Background สำหรับ Dark Mode */
+.dark-mode .order-summary-card .card-body {
+  background-color: #3a3a3a;
+  color: #f8f9fa;
+}
+
+/* Transition สำหรับทุกองค์ประกอบภายในหน้า */
+.order-summary-page * {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}

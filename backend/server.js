@@ -1,10 +1,12 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
-const bcrypt = require("bcrypt");
 const db = require("./db");
-
+const path = require("path");
 const app = express();
+const distances = require("./data/distances.json"); // โหลดระยะทางจากไฟล์ JSON
+const bcrypt = require("bcrypt");
+
 app.use(cors());
 app.use(bodyParser.json());
 
@@ -16,6 +18,37 @@ const validateBody = (requiredFields) => (req, res, next) => {
     }
     next();
 };
+
+const handleStatusChange = async (orderId, newStatus) => {
+    console.log("Updating status for Order ID:", orderId, "to", newStatus);
+  
+    try {
+      const response = await fetch("http://localhost:5000/api/updateOrderStatus", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ orderId, newStatus }),
+      });
+  
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+  
+      const data = await response.json();
+      console.log("Server Response:", data);
+  
+      setOrders((prevOrders) =>
+        prevOrders.map((order) =>
+          order.Order_ID === orderId ? { ...order, status: newStatus } : order
+        )
+      );
+    } catch (error) {
+      console.error("Error updating status:", error);
+    }
+  };
+
+  
 
 // Login API
 app.post("/login", (req, res) => {
@@ -78,6 +111,18 @@ app.post("/login", (req, res) => {
         }
     });
 });
+
+app.get("/api/distances", (req, res) => {
+    const filePath = path.join(__dirname, "data", "distances.json");
+
+    res.sendFile(filePath, (err) => {
+        if (err) {
+            console.error("Error sending distances.json:", err);
+            return res.status(500).send({ message: "Failed to load distances.json" });
+        }
+    });
+});
+
 
 
 
@@ -166,10 +211,6 @@ app.put("/user/update", (req, res) => {
 });
 
 
-
-
-
-
 // อัปเดตข้อมูล Admin
 app.put("/admin/update", (req, res) => {
     const { Emp_ID, Emp_Name, Emp_Lname, Username, Password, Emp_Phone, Emp_Email } = req.body;
@@ -184,6 +225,31 @@ app.put("/admin/update", (req, res) => {
         res.status(200).send({ message: "Admin updated successfully" });
     });
 });
+
+
+// อัปเดตข้อมูล Order
+app.post("/api/updateOrderStatus", (req, res) => {
+    const { orderId, newStatus } = req.body;
+
+    console.log("Received request to update:", orderId, "to", newStatus);
+
+    if (!orderId || !newStatus) {
+        return res.status(400).json({ message: "Missing orderId or newStatus" });
+    }
+
+    const sql = "UPDATE tb_order SET status = ? WHERE Order_ID = ?";
+    db.query(sql, [newStatus, orderId], (err, result) => {
+        if (err) {
+            console.error("Error updating order status:", err);
+            return res.status(500).json({ message: "Failed to update order status" });
+        }
+
+        console.log("Database Update Success:", result);
+        res.status(200).json({ message: "Order status updated successfully", orderId, newStatus });
+    });
+});
+
+
 
 
 
@@ -264,38 +330,152 @@ app.delete("/users/:id", (req, res) => {
 
 // สร้างคำสั่งซื้อใหม่
 app.post("/order/create", (req, res) => {
-    const { Cus_ID, Cus_Name, Cus_Lname, Cus_Phone, Cus_Email, Location_From, Location_To } = req.body;
+    const {
+        Cus_ID,
+        Cus_Name,
+        Cus_Lname,
+        Cus_Phone,
+        Cus_Email,
+        Location_From,
+        Location_To,
+        Distance,
+        Total_Cost,
+    } = req.body;
 
-    if (!Cus_ID) {
-        return res.status(400).send({ message: "Cus_ID is required" });
+    // ตรวจสอบว่าข้อมูลครบถ้วน
+    if (
+        !Cus_ID ||
+        !Cus_Name ||
+        !Cus_Lname ||
+        !Cus_Phone ||
+        !Cus_Email ||
+        !Location_From ||
+        !Location_To ||
+        Distance == null ||
+        Total_Cost == null
+    ) {
+        return res.status(400).send({ message: "All fields are required" });
+    }
+
+    // ตรวจสอบคำสั่งซื้อซ้ำในวันเดียวกัน
+    const checkDuplicateSQL = `
+      SELECT * FROM tb_order 
+      WHERE Cus_ID = ? AND Location_From = ? AND Location_To = ? AND DATE(Order_Date) = CURDATE()
+    `;
+    db.query(
+        checkDuplicateSQL,
+        [Cus_ID, Location_From, Location_To],
+        (err, results) => {
+            if (err) {
+                console.error("Error checking for duplicates:", err);
+                return res.status(500).send({ message: "Failed to check for duplicates" });
+            }
+
+            if (results.length > 0) {
+                return res.status(409).send({ message: "Duplicate order found" });
+            }
+
+            // หากไม่มีคำสั่งซื้อซ้ำ ให้บันทึกข้อมูลใหม่
+            const insertSQL = `
+              INSERT INTO tb_order 
+              (Cus_ID, Cus_Name, Cus_Lname, Cus_Phone, Cus_Email, Location_From, Location_To, Distance, Total_Cost) 
+              VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+            `;
+            const params = [
+                Cus_ID,
+                Cus_Name,
+                Cus_Lname,
+                Cus_Phone,
+                Cus_Email,
+                Location_From,
+                Location_To,
+                Distance,
+                Total_Cost,
+            ];
+
+            db.query(insertSQL, params, (err, result) => {
+                if (err) {
+                    console.error("Error creating order:", err);
+                    return res.status(500).send({ message: "Failed to create order" });
+                }
+
+                res.status(201).send({
+                    message: "Order created successfully",
+                    orderID: result.insertId,
+                });
+            });
+        }
+    );
+});
+
+
+app.post("/orders", (req, res) => {
+    const {
+        Cus_ID,
+        Cus_Name,
+        Cus_Lname,
+        Cus_Phone,
+        Cus_Email,
+        Location_From,
+        Location_To,
+        Distance,
+        Cost,
+        status, // รับค่า status
+    } = req.body;
+
+    if (
+        !Cus_ID ||
+        !Cus_Name ||
+        !Cus_Lname ||
+        !Cus_Phone ||
+        !Cus_Email ||
+        !Location_From ||
+        !Location_To ||
+        Distance == null ||
+        Cost == null ||
+        !status // ตรวจสอบว่ามีค่า status หรือไม่
+    ) {
+        return res.status(400).send({ message: "Missing required fields" });
     }
 
     const sql = `
-      INSERT INTO tb_order (Cus_ID, Cus_Name, Cus_Lname, Cus_Phone, Cus_Email, Location_From, Location_To)
-      VALUES (?, ?, ?, ?, ?, ?, ?)
+      INSERT INTO tb_order
+      (Cus_ID, Cus_Name, Cus_Lname, Cus_Phone, Cus_Email, Location_From, Location_To, Distance, Total_Cost, status)
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
     `;
-
-    const params = [Cus_ID, Cus_Name, Cus_Lname, Cus_Phone, Cus_Email, Location_From, Location_To];
+    const params = [
+        Cus_ID,
+        Cus_Name,
+        Cus_Lname,
+        Cus_Phone,
+        Cus_Email,
+        Location_From,
+        Location_To,
+        Distance,
+        Cost,
+        status, // เพิ่ม status เข้าไปใน params
+    ];
 
     db.query(sql, params, (err, result) => {
         if (err) {
-            console.error("Error creating order:", err);
-            return res.status(500).send({ message: "Failed to create order" });
+            console.error("Error inserting order:", err);
+            return res.status(500).send({ message: "Failed to save order" });
         }
-        res.status(201).send({ message: "Order created successfully" });
+        res.status(201).send({ message: "Order saved successfully" });
     });
 });
+
 
 app.get("/orders", (req, res) => {
     const { Cus_ID } = req.query;
 
     let sql = `
-      SELECT Order_ID, Cus_ID, Cus_Name, Cus_Lname, Cus_Phone, Cus_Email, Location_From, Location_To, Order_Date
-      FROM tb_order
-    `;
+    SELECT Order_ID, Cus_ID, Cus_Name, Cus_Lname, Cus_Email, Cus_Phone, Location_From, Location_To, Distance, Total_Cost, Order_Date, status
+    FROM tb_order
+  `;
     const params = [];
 
-    // กรองเฉพาะคำสั่งซื้อของลูกค้าหากส่ง Cus_ID มา
+    // หากส่ง Cus_ID มา จะกรองเฉพาะคำสั่งซื้อของลูกค้าคนนั้น
     if (Cus_ID) {
         sql += ` WHERE Cus_ID = ?`;
         params.push(Cus_ID);
@@ -313,22 +493,64 @@ app.get("/orders", (req, res) => {
     });
 });
 
+// API คำนวณค่าใช้จ่าย
+app.post("/calculate-cost", (req, res) => {
+    const { destinationProvince, destinationDistrict } = req.body;
 
-app.post("/calculate-price", (req, res) => {
-    const { pickUpProvince, pickUpDistrict, deliveryProvince, deliveryDistrict } = req.body;
+    if (!destinationProvince || !destinationDistrict) {
+        return res.status(400).send({ message: "Missing destination information" });
+    }
 
-    // Mock ระยะทาง (km)
-    const distance = Math.floor(Math.random() * 500) + 1; // 1 - 500 km
+    // ตรวจสอบว่า distances.json โหลดสำเร็จ
+    if (!Array.isArray(distances)) {
+        return res.status(500).send({ message: "Distances data not loaded" });
+    }
 
-    // ราคาต่อกิโลเมตร
-    const ratePerKm = 5; // 5 บาทต่อกิโลเมตร
-    const baseServiceFee = 50; // ค่าบริการพื้นฐาน
+    // ค้นหาจังหวัด
+    const province = distances.find((p) => p.province === destinationProvince);
+    if (!province) {
+        console.error(`Province not found: ${destinationProvince}`);
+        return res.status(404).send({ message: "Province not found" });
+    }
 
-    const price = distance * ratePerKm + baseServiceFee;
+    // ค้นหาอำเภอ
+    const district = province.districts.find((d) => d.name === destinationDistrict);
+    if (!district) {
+        console.error(`District not found in ${destinationProvince}: ${destinationDistrict}`);
+        return res.status(404).send({ message: "District not found" });
+    }
 
-    res.status(200).send({ distance, price });
+    // คำนวณค่าใช้จ่าย
+    const baseRate = 5; // บาทต่อกิโลเมตร
+    const serviceFee = 50; // ค่าบริการพื้นฐาน
+    const price = district.distance * baseRate + serviceFee;
+
+    res.status(200).send({
+        distance: district.distance,
+        price,
+    });
 });
 
+
+
+// 📌 สร้าง API สำหรับดึงจำนวนสมาชิก
+app.get("/stats", (req, res) => {
+    const query = `
+      SELECT 
+        (SELECT COUNT(*) FROM tb_customer) + (SELECT COUNT(*) FROM tb_employee) AS total_members,
+        (SELECT COUNT(*) FROM tb_order) AS total_orders
+    `;
+  
+    db.query(query, (err, results) => {
+      if (err) {
+        console.error("Error fetching stats:", err);
+        return res.status(500).json({ error: "Database error" });
+      }
+      res.json(results[0]); // ส่งข้อมูลออกไป
+    });
+  });
+  
+  
 // Start Server
 const PORT = 5000;
 app.listen(PORT, () => {

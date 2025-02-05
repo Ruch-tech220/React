@@ -1,34 +1,38 @@
-import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import React, { useContext } from "react";
+import { Link, NavLink, useNavigate } from "react-router-dom";
+import { ThemeContext } from "./ThemeProvider";
+import logo from "../assets/images/logo1.WEBP";
+import "../css/Navbar.css"; 
 
 const Navbar = () => {
   const navigate = useNavigate();
+  const { isDarkMode, toggleTheme } = useContext(ThemeContext);
 
-  // อ่านข้อมูลผู้ใช้จาก Local Storage
   const user = JSON.parse(localStorage.getItem("user") || "{}");
   const admin = JSON.parse(localStorage.getItem("admin") || "{}");
 
   const handleLogout = () => {
-    // ลบข้อมูลทั้ง User และ Admin
     localStorage.removeItem("user");
     localStorage.removeItem("admin");
     navigate("/login");
   };
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
+    <nav
+      className={`navbar navbar-expand-lg shadow-sm main-navbar ${
+        isDarkMode ? "navbar-dark bg-dark" : "navbar-light bg-light"
+      }`}
+    >
       <div className="container">
-        {/* Brand Logo */}
-        <Link to="/home" className="navbar-brand fw-bold">
+        <Link to="/home" className="navbar-brand d-flex align-items-center">
           <img
-            src="https://via.placeholder.com/30"
+            src={logo}
             alt="Logo"
-            className="me-2"
+            className="me-2 rounded-circle"
+            style={{ width: "50px", height: "50px" }}
           />
-          MyApp
+          <span className="fw-bold">ระบบขนส่งสินค้า</span>
         </Link>
-
-        {/* Toggle for Mobile View */}
         <button
           className="navbar-toggler"
           type="button"
@@ -42,116 +46,120 @@ const Navbar = () => {
         </button>
 
         <div className="collapse navbar-collapse" id="navbarNav">
-          <ul className="navbar-nav ms-auto">
-            {/* Public Links */}
+          {/* เมนูหลัก */}
+          <ul className="navbar-nav ms-auto align-items-center">
             <li className="nav-item">
-              <Link to="/home" className="nav-link">
-                Home
-              </Link>
+              <NavLink to="/home" className="nav-link">
+                หน้าแรก
+              </NavLink>
             </li>
             <li className="nav-item">
-              <Link to="/about" className="nav-link">
-                About
-              </Link>
+              <NavLink to="/services" className="nav-link">
+                บริการ
+              </NavLink>
             </li>
-            {/* Dynamic Links */}
-            {(user.Cus_Name || admin.Emp_Name) && (
-              <li className="nav-item">
-                <Link to="/services" className="nav-link">
-                  Services
-                </Link>
-              </li>
-            )}
+            <li className="nav-item">
+              <NavLink to="/about" className="nav-link">
+                เกี่ยวกับเรา
+              </NavLink>
+            </li>
 
-            {/* Dynamic Links */}
+            {/* ยังไม่ล็อกอิน */}
             {!user.Cus_Name && !admin.Emp_Name ? (
-              // Links for Guests
               <>
                 <li className="nav-item">
-                  <Link to="/login" className="nav-link">
-                    Login
-                  </Link>
+                  <NavLink to="/login" className="nav-link">
+                    เข้าสู่ระบบ
+                  </NavLink>
                 </li>
                 <li className="nav-item">
-                  <Link to="/register" className="nav-link">
-                    Register
-                  </Link>
+                  <NavLink to="/register" className="nav-link">
+                    สมัครสมาชิก
+                  </NavLink>
                 </li>
               </>
             ) : admin.Emp_Name ? (
-              // Links for Admin
-              <>
-                <li className="nav-item dropdown">
-                  <a
-                    className="nav-link dropdown-toggle"
-                    href="#"
-                    id="navbarDropdown"
-                    role="button"
-                    data-bs-toggle="dropdown"
-                    aria-expanded="false"
-                  >
-                    {admin.Emp_Name}
-                  </a>
-                  <ul
-                    className="dropdown-menu"
-                    aria-labelledby="navbarDropdown"
-                  >
-                    <li>
-                      <Link to="/admin/profile" className="dropdown-item">
-                        Profile
-                      </Link>
-                    </li>
-                    <li>
-                      <Link to="/admin/dashboard" className="dropdown-item">
-                        Dashboard
-                      </Link>
-                    </li>
-                    <li>
-                      <button className="dropdown-item" onClick={handleLogout}>
-                        Logout
-                      </button>
-                    </li>
-                  </ul>
-                </li>
-              </>
+              // Admin
+              <li className="nav-item dropdown">
+                <button
+                  className="nav-link dropdown-toggle btn btn-link"
+                  id="navbarDropdown"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  {admin.Emp_Name}
+                </button>
+                <ul className="dropdown-menu">
+                  <li>
+                    <Link to="/admin/profile" className="dropdown-item">
+                      โปรไฟล์
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/admin/dashboard" className="dropdown-item">
+                      แดชบอร์ด
+                    </Link>
+                  </li>
+                  <li>
+                    <button className="dropdown-item" onClick={handleLogout}>
+                      ออกจากระบบ
+                    </button>
+                  </li>
+                </ul>
+              </li>
             ) : (
-              // Links for Users
-              <>
-                <li className="nav-item">
-                  <Link to="/order-history" className="nav-link">
-                    List
-                  </Link>
-                </li>
-                <li className="nav-item dropdown">
-                  <a
-                    className="nav-link dropdown-toggle"
-                    href="#"
-                    id="navbarDropdown"
-                    role="button"
-                    data-bs-toggle="dropdown"
-                    aria-expanded="false"
-                  >
-                    {user.Cus_Name}
-                  </a>
-                  <ul
-                    className="dropdown-menu"
-                    aria-labelledby="navbarDropdown"
-                  >
-                    <li>
-                      <Link to="/profile" className="dropdown-item">
-                        Profile
-                      </Link>
-                    </li>
-                    <li>
-                      <button className="dropdown-item" onClick={handleLogout}>
-                        Logout
-                      </button>
-                    </li>
-                  </ul>
-                </li>
-              </>
+              // User
+              <li className="nav-item dropdown">
+                <button
+                  className="nav-link dropdown-toggle btn btn-link"
+                  id="navbarDropdown"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  {user.Cus_Name}
+                </button>
+                <ul className="dropdown-menu">
+                  <li>
+                    <Link to="/profile" className="dropdown-item">
+                      โปรไฟล์
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/order-history" className="dropdown-item">
+                      ประวัติการสั่งซื้อ
+                    </Link>
+                  </li>
+                  <li>
+                    <button className="dropdown-item" onClick={handleLogout}>
+                      ออกจากระบบ
+                    </button>
+                  </li>
+                </ul>
+              </li>
             )}
           </ul>
+
+          {/* ปุ่มโหมดสว่าง/มืด */}
+          <div className="d-flex">
+            <button
+              className={`btn btn-sm ms-3 ${
+                isDarkMode ? "btn-light" : "btn-dark"
+              } toggle-theme-btn`}
+              onClick={toggleTheme}
+            >
+              {isDarkMode ? (
+                <>
+                  <i className="bi bi-sun-fill text-warning me-1"></i>
+                  Light
+                </>
+              ) : (
+                <>
+                  <i className="bi bi-moon-fill text-white me-1"></i>
+                  Dark
+                </>
+              )}
+            </button>
+          </div>
         </div>
       </div>
     </nav>
@@ -159,3 +167,4 @@ const Navbar = () => {
 };
 
 export default Navbar;
+

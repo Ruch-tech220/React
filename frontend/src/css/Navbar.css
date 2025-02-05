@@ -1,0 +1,56 @@
+/* สร้างคลาส .main-navbar เพื่อปรับแต่งเพิ่มเติมหากต้องการ */
+.main-navbar {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* ปุ่ม Toggle Theme */
+.toggle-theme-btn {
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.toggle-theme-btn:hover {
+  transform: scale(1.05);
+}
+
+/* Dropdown menu: ปรับขนาดตัวอักษรใน dropdown-item ให้พอดี */
+.dropdown-item {
+  font-size: 0.95rem;
+  color: white;
+}
+
+/* เพิ่มเอฟเฟ็กต์ hover เล็กน้อย */
+.dropdown-item:hover {
+  background-color: rgba(0, 0, 0, 0.07);
+}
+
+.navbar-dark .dropdown-menu {
+  background-color: #343a40; /* พื้นหลังของ Dropdown */
+  border: none; /* หรือตกแต่งตามชอบ */
+}
+
+/* กำหนดสีตัวอักษรของ .dropdown-item โดยเฉพาะในโหมด dark */
+.navbar-dark .dropdown-menu .dropdown-item {
+  color: #ffffff; /* เปลี่ยนเป็นสีขาวหรือสีอื่น ๆ ที่อ่านง่าย */
+}
+
+/* หรือหากต้องการเปลี่ยนสีเมื่อ Hover */
+.navbar-dark .dropdown-menu .dropdown-item:hover {
+  background-color: #495057;
+  color: #ffffff;
+}
+
+
+/* NavLink Active State (ถ้าอยากปรับสีเฉพาะตอน active) */
+.nav-link.active {
+  font-weight: 600;
+}
+
+/* Animation สำหรับ Hamburger Icon เมื่อคลิก toggle */
+.navbar-toggler-icon {
+  transition: transform 0.3s;
+}
+
+.navbar-toggler:focus .navbar-toggler-icon,
+.navbar-toggler:hover .navbar-toggler-icon {
+  transform: rotate(90deg);
+}

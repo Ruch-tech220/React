@@ -1,0 +1,3544 @@
+[
+    {
+        "id": 1,
+        "province": "กรุงเทพมหานคร",
+        "districts": [
+            {
+                "name": "พระนคร",
+                "distance": 96
+            },
+            {
+                "name": "ดุสิต",
+                "distance": 98
+            },
+            {
+                "name": "บางรัก",
+                "distance": 100
+            },
+            {
+                "name": "ปทุมวัน",
+                "distance": 102
+            },
+            {
+                "name": "ราชเทวี",
+                "distance": 104
+            },
+            {
+                "name": "สัมพันธวงศ์",
+                "distance": 106
+            },
+            {
+                "name": "พญาไท",
+                "distance": 108
+            },
+            {
+                "name": "บางซื่อ",
+                "distance": 110
+            },
+            {
+                "name": "จตุจักร",
+                "distance": 112
+            },
+            {
+                "name": "ดอนเมือง",
+                "distance": 115
+            }
+        ]
+    },
+    {
+        "id": 2,
+        "province": "สมุทรปราการ",
+        "districts": [
+            {
+                "name": "เมืองสมุทรปราการ",
+                "distance": 45
+            },
+            {
+                "name": "บางบ่อ",
+                "distance": 50
+            },
+            {
+                "name": "บางพลี",
+                "distance": 55
+            },
+            {
+                "name": "พระประแดง",
+                "distance": 60
+            },
+            {
+                "name": "พระสมุทรเจดีย์",
+                "distance": 65
+            },
+            {
+                "name": "บางเสาธง",
+                "distance": 70
+            },
+            {
+                "name": "บางปู",
+                "distance": 75
+            },
+            {
+                "name": "คลองด่าน",
+                "distance": 80
+            },
+            {
+                "name": "บางปลา",
+                "distance": 85
+            },
+            {
+                "name": "บางเมือง",
+                "distance": 90
+            }
+        ]
+    },
+    {
+        "id": 3,
+        "province": "นนทบุรี",
+        "districts": [
+            {
+                "name": "เมืองนนทบุรี",
+                "distance": 50
+            },
+            {
+                "name": "บางกรวย",
+                "distance": 55
+            },
+            {
+                "name": "บางใหญ่",
+                "distance": 60
+            },
+            {
+                "name": "บางบัวทอง",
+                "distance": 65
+            },
+            {
+                "name": "ไทรน้อย",
+                "distance": 70
+            },
+            {
+                "name": "บางศรีเมือง",
+                "distance": 75
+            },
+            {
+                "name": "บางรักใหญ่",
+                "distance": 80
+            },
+            {
+                "name": "บางม่วง",
+                "distance": 85
+            },
+            {
+                "name": "บางขุนกอง",
+                "distance": 90
+            },
+            {
+                "name": "บางคูเวียง",
+                "distance": 95
+            }
+        ]
+    },
+    {
+        "id": 4,
+        "province": "ปทุมธานี",
+        "districts": [
+            {
+                "name": "เมืองปทุมธานี",
+                "distance": 30
+            },
+            {
+                "name": "คลองหลวง",
+                "distance": 35
+            },
+            {
+                "name": "ธัญบุรี",
+                "distance": 40
+            },
+            {
+                "name": "ลำลูกกา",
+                "distance": 45
+            },
+            {
+                "name": "หนองเสือ",
+                "distance": 50
+            },
+            {
+                "name": "สามโคก",
+                "distance": 55
+            },
+            {
+                "name": "ลาดหลุมแก้ว",
+                "distance": 60
+            },
+            {
+                "name": "บึงยี่โถ",
+                "distance": 65
+            },
+            {
+                "name": "รังสิต",
+                "distance": 70
+            },
+            {
+                "name": "คลองสี่",
+                "distance": 75
+            }
+        ]
+    },
+    {
+        "id": 5,
+        "province": "พระนครศรีอยุธยา",
+        "districts": [
+            {
+                "name": "พระนครศรีอยุธยา",
+                "distance": 25
+            },
+            {
+                "name": "บางปะอิน",
+                "distance": 30
+            },
+            {
+                "name": "บางไทร",
+                "distance": 35
+            },
+            {
+                "name": "บางบาล",
+                "distance": 40
+            },
+            {
+                "name": "บางปะหัน",
+                "distance": 45
+            },
+            {
+                "name": "ผักไห่",
+                "distance": 50
+            },
+            {
+                "name": "ลาดบัวหลวง",
+                "distance": 55
+            },
+            {
+                "name": "เสนา",
+                "distance": 60
+            },
+            {
+                "name": "อุทัย",
+                "distance": 65
+            },
+            {
+                "name": "มหาราช",
+                "distance": 70
+            }
+        ]
+    },
+    {
+        "id": 6,
+        "province": "อ่างทอง",
+        "districts": [
+            {
+                "name": "เมืองอ่างทอง",
+                "distance": 20
+            },
+            {
+                "name": "ไชโย",
+                "distance": 25
+            },
+            {
+                "name": "โพธิ์ทอง",
+                "distance": 30
+            },
+            {
+                "name": "ป่าโมก",
+                "distance": 35
+            },
+            {
+                "name": "วิเศษชัยชาญ",
+                "distance": 40
+            },
+            {
+                "name": "สามโก้",
+                "distance": 45
+            },
+            {
+                "name": "สีบัวทอง",
+                "distance": 50
+            },
+            {
+                "name": "โพสะ",
+                "distance": 55
+            },
+            {
+                "name": "ตำบลอินทร์",
+                "distance": 60
+            },
+            {
+                "name": "บ้านป่า",
+                "distance": 65
+            }
+        ]
+    },
+    {
+        "id": 7,
+        "province": "ลพบุรี",
+        "districts": [
+            {
+                "name": "เมืองลพบุรี",
+                "distance": 45
+            },
+            {
+                "name": "ชัยบาดาล",
+                "distance": 50
+            },
+            {
+                "name": "บ้านหมี่",
+                "distance": 55
+            },
+            {
+                "name": "ท่าวุ้ง",
+                "distance": 60
+            },
+            {
+                "name": "โคกสำโรง",
+                "distance": 65
+            },
+            {
+                "name": "หนองม่วง",
+                "distance": 70
+            },
+            {
+                "name": "ลำสนธิ",
+                "distance": 75
+            },
+            {
+                "name": "สระโบสถ์",
+                "distance": 80
+            },
+            {
+                "name": "โคกเจริญ",
+                "distance": 85
+            },
+            {
+                "name": "หนองสังข์",
+                "distance": 90
+            }
+        ]
+    },
+    {
+        "id": 8,
+        "province": "สิงห์บุรี",
+        "districts": [
+            {
+                "name": "เมืองสิงห์บุรี",
+                "distance": 30
+            },
+            {
+                "name": "บางระจัน",
+                "distance": 35
+            },
+            {
+                "name": "พรหมบุรี",
+                "distance": 40
+            },
+            {
+                "name": "ท่าช้าง",
+                "distance": 45
+            },
+            {
+                "name": "อินทร์บุรี",
+                "distance": 50
+            },
+            {
+                "name": "โพสังโฆษ",
+                "distance": 55
+            },
+            {
+                "name": "ทุ่งใหญ่",
+                "distance": 60
+            },
+            {
+                "name": "บางระกำ",
+                "distance": 65
+            },
+            {
+                "name": "สรรคบุรี",
+                "distance": 70
+            },
+            {
+                "name": "บ้านแหลม",
+                "distance": 75
+            }
+        ]
+    },
+    {
+        "id": 9,
+        "province": "ชัยนาท",
+        "districts": [
+            {
+                "name": "เมืองชัยนาท",
+                "distance": 50
+            },
+            {
+                "name": "หันคา",
+                "distance": 55
+            },
+            {
+                "name": "วัดสิงห์",
+                "distance": 60
+            },
+            {
+                "name": "หนองมะโมง",
+                "distance": 65
+            },
+            {
+                "name": "สรรพยา",
+                "distance": 70
+            },
+            {
+                "name": "เนินขาม",
+                "distance": 75
+            },
+            {
+                "name": "มโนรมย์",
+                "distance": 80
+            },
+            {
+                "name": "ท่าช้าง",
+                "distance": 85
+            },
+            {
+                "name": "วังไชย",
+                "distance": 90
+            },
+            {
+                "name": "ดอนกำ",
+                "distance": 95
+            }
+        ]
+    },
+    {
+        "id": 10,
+        "province": "สระบุรี",
+        "districts": [
+            {
+                "name": "เมืองสระบุรี",
+                "distance": 15
+            },
+            {
+                "name": "แก่งคอย",
+                "distance": 20
+            },
+            {
+                "name": "พระพุทธบาท",
+                "distance": 25
+            },
+            {
+                "name": "เสาไห้",
+                "distance": 30
+            },
+            {
+                "name": "หนองแค",
+                "distance": 35
+            },
+            {
+                "name": "หนองโดน",
+                "distance": 40
+            },
+            {
+                "name": "วังม่วง",
+                "distance": 45
+            },
+            {
+                "name": "เฉลิมพระเกียรติ",
+                "distance": 50
+            },
+            {
+                "name": "แก่งคอย",
+                "distance": 55
+            },
+            {
+                "name": "บ้านหมอ",
+                "distance": 60
+            }
+        ]
+    },
+    {
+        "id": 11,
+        "province": "ชลบุรี",
+        "districts": [
+            {
+                "name": "เมืองชลบุรี",
+                "distance": 85
+            },
+            {
+                "name": "บางละมุง",
+                "distance": 90
+            },
+            {
+                "name": "ศรีราชา",
+                "distance": 95
+            },
+            {
+                "name": "เกาะสีชัง",
+                "distance": 100
+            },
+            {
+                "name": "พานทอง",
+                "distance": 105
+            },
+            {
+                "name": "บ้านบึง",
+                "distance": 110
+            },
+            {
+                "name": "หนองใหญ่",
+                "distance": 115
+            },
+            {
+                "name": "สัตหีบ",
+                "distance": 120
+            },
+            {
+                "name": "บ่อทอง",
+                "distance": 125
+            },
+            {
+                "name": "เกาะจันทร์",
+                "distance": 130
+            }
+        ]
+    },
+    {
+        "id": 12,
+        "province": "ระยอง",
+        "districts": [
+            {
+                "name": "เมืองระยอง",
+                "distance": 140
+            },
+            {
+                "name": "แกลง",
+                "distance": 150
+            },
+            {
+                "name": "บ้านค่าย",
+                "distance": 160
+            },
+            {
+                "name": "บ้านฉาง",
+                "distance": 170
+            },
+            {
+                "name": "ปลวกแดง",
+                "distance": 180
+            },
+            {
+                "name": "วังจันทร์",
+                "distance": 190
+            },
+            {
+                "name": "เขาชะเมา",
+                "distance": 200
+            },
+            {
+                "name": "แม่ระกา",
+                "distance": 210
+            },
+            {
+                "name": "ชากโดน",
+                "distance": 220
+            },
+            {
+                "name": "ห้วยโป่ง",
+                "distance": 230
+            }
+        ]
+    },
+    {
+        "id": 13,
+        "province": "จันทบุรี",
+        "districts": [
+            {
+                "name": "เมืองจันทบุรี",
+                "distance": 250
+            },
+            {
+                "name": "ขลุง",
+                "distance": 260
+            },
+            {
+                "name": "ท่าใหม่",
+                "distance": 270
+            },
+            {
+                "name": "โป่งน้ำร้อน",
+                "distance": 280
+            },
+            {
+                "name": "แหลมสิงห์",
+                "distance": 290
+            },
+            {
+                "name": "นายายอาม",
+                "distance": 300
+            },
+            {
+                "name": "สอยดาว",
+                "distance": 310
+            },
+            {
+                "name": "มะขาม",
+                "distance": 320
+            },
+            {
+                "name": "เขาคิชฌกูฏ",
+                "distance": 330
+            },
+            {
+                "name": "โขมง",
+                "distance": 340
+            }
+        ]
+    },
+    {
+        "id": 14,
+        "province": "ตราด",
+        "districts": [
+            {
+                "name": "เมืองตราด",
+                "distance": 350
+            },
+            {
+                "name": "คลองใหญ่",
+                "distance": 360
+            },
+            {
+                "name": "เกาะช้าง",
+                "distance": 370
+            },
+            {
+                "name": "เกาะกูด",
+                "distance": 380
+            },
+            {
+                "name": "บ่อพลอย",
+                "distance": 390
+            },
+            {
+                "name": "ห้วยแร้ง",
+                "distance": 400
+            },
+            {
+                "name": "แหลมกลัด",
+                "distance": 410
+            },
+            {
+                "name": "ไม้รูด",
+                "distance": 420
+            },
+            {
+                "name": "แหลมงอบ",
+                "distance": 430
+            },
+            {
+                "name": "บ้านนา",
+                "distance": 440
+            }
+        ]
+    },
+    {
+        "id": 15,
+        "province": "ฉะเชิงเทรา",
+        "districts": [
+            {
+                "name": "เมืองฉะเชิงเทรา",
+                "distance": 70
+            },
+            {
+                "name": "บางน้ำเปรี้ยว",
+                "distance": 75
+            },
+            {
+                "name": "บางปะกง",
+                "distance": 80
+            },
+            {
+                "name": "บ้านโพธิ์",
+                "distance": 85
+            },
+            {
+                "name": "พนมสารคาม",
+                "distance": 90
+            },
+            {
+                "name": "แปลงยาว",
+                "distance": 95
+            },
+            {
+                "name": "ท่าตะเกียบ",
+                "distance": 100
+            },
+            {
+                "name": "คลองเขื่อน",
+                "distance": 105
+            },
+            {
+                "name": "บางไผ่",
+                "distance": 110
+            },
+            {
+                "name": "ดอนฉิมพลี",
+                "distance": 115
+            }
+        ]
+    },
+    {
+        "id": 16,
+        "province": "ปราจีนบุรี",
+        "districts": [
+            {
+                "name": "เมืองปราจีนบุรี",
+                "distance": 120
+            },
+            {
+                "name": "กบินทร์บุรี",
+                "distance": 130
+            },
+            {
+                "name": "ศรีมหาโพธิ",
+                "distance": 140
+            },
+            {
+                "name": "บ้านสร้าง",
+                "distance": 150
+            },
+            {
+                "name": "นาดี",
+                "distance": 160
+            },
+            {
+                "name": "ประจันตคาม",
+                "distance": 170
+            },
+            {
+                "name": "ศรีมโหสถ",
+                "distance": 180
+            },
+            {
+                "name": "ทุ่งโพธิ์",
+                "distance": 190
+            },
+            {
+                "name": "บางแตน",
+                "distance": 200
+            },
+            {
+                "name": "โคกขมิ้น",
+                "distance": 210
+            }
+        ]
+    },
+    {
+        "id": 17,
+        "province": "นครนายก",
+        "districts": [
+            {
+                "name": "เมืองนครนายก",
+                "distance": 50
+            },
+            {
+                "name": "ปากพลี",
+                "distance": 55
+            },
+            {
+                "name": "บ้านนา",
+                "distance": 60
+            },
+            {
+                "name": "องครักษ์",
+                "distance": 65
+            },
+            {
+                "name": "ดงละคร",
+                "distance": 70
+            },
+            {
+                "name": "นาหินลาด",
+                "distance": 75
+            },
+            {
+                "name": "ศรีนาวา",
+                "distance": 80
+            },
+            {
+                "name": "ท่าช้าง",
+                "distance": 85
+            },
+            {
+                "name": "หนองแสง",
+                "distance": 90
+            },
+            {
+                "name": "บึงศาล",
+                "distance": 95
+            }
+        ]
+    },
+    {
+        "id": 18,
+        "province": "สระแก้ว",
+        "districts": [
+            {
+                "name": "เมืองสระแก้ว",
+                "distance": 220
+            },
+            {
+                "name": "อรัญประเทศ",
+                "distance": 230
+            },
+            {
+                "name": "ตาพระยา",
+                "distance": 240
+            },
+            {
+                "name": "วัฒนานคร",
+                "distance": 250
+            },
+            {
+                "name": "โคกสูง",
+                "distance": 260
+            },
+            {
+                "name": "เขาฉกรรจ์",
+                "distance": 270
+            },
+            {
+                "name": "คลองหาด",
+                "distance": 280
+            },
+            {
+                "name": "ปราจีนบุรี",
+                "distance": 290
+            },
+            {
+                "name": "กบินทร์บุรี",
+                "distance": 300
+            },
+            {
+                "name": "สระขวัญ",
+                "distance": 310
+            }
+        ]
+    },
+    {
+        "id": 19,
+        "province": "นครราชสีมา",
+        "districts": [
+            {
+                "name": "เมืองนครราชสีมา",
+                "distance": 200
+            },
+            {
+                "name": "ปากช่อง",
+                "distance": 210
+            },
+            {
+                "name": "พิมาย",
+                "distance": 220
+            },
+            {
+                "name": "โชคชัย",
+                "distance": 230
+            },
+            {
+                "name": "เสิงสาง",
+                "distance": 240
+            },
+            {
+                "name": "สูงเนิน",
+                "distance": 250
+            },
+            {
+                "name": "ด่านขุนทด",
+                "distance": 260
+            },
+            {
+                "name": "โนนไทย",
+                "distance": 270
+            },
+            {
+                "name": "โนนสูง",
+                "distance": 280
+            },
+            {
+                "name": "บัวใหญ่",
+                "distance": 290
+            }
+        ]
+    },
+    {
+        "id": 20,
+        "province": "บุรีรัมย์",
+        "districts": [
+            {
+                "name": "เมืองบุรีรัมย์",
+                "distance": 300
+            },
+            {
+                "name": "กระสัง",
+                "distance": 310
+            },
+            {
+                "name": "ประโคนชัย",
+                "distance": 320
+            },
+            {
+                "name": "หนองกี่",
+                "distance": 330
+            },
+            {
+                "name": "ละหานทราย",
+                "distance": 340
+            },
+            {
+                "name": "บ้านกรวด",
+                "distance": 350
+            },
+            {
+                "name": "คูเมือง",
+                "distance": 360
+            },
+            {
+                "name": "สตึก",
+                "distance": 370
+            },
+            {
+                "name": "พุทไธสง",
+                "distance": 380
+            },
+            {
+                "name": "ลำปลายมาศ",
+                "distance": 390
+            }
+        ]
+    },
+    {
+        "id": 21,
+        "province": "สุรินทร์",
+        "districts": [
+            {
+                "name": "เมืองสุรินทร์",
+                "distance": 400
+            },
+            {
+                "name": "ท่าตูม",
+                "distance": 410
+            },
+            {
+                "name": "จอมพระ",
+                "distance": 420
+            },
+            {
+                "name": "รัตนบุรี",
+                "distance": 430
+            },
+            {
+                "name": "สนม",
+                "distance": 440
+            },
+            {
+                "name": "ศีขรภูมิ",
+                "distance": 450
+            },
+            {
+                "name": "สำโรงทาบ",
+                "distance": 460
+            },
+            {
+                "name": "ชุมพลบุรี",
+                "distance": 470
+            },
+            {
+                "name": "บัวเชด",
+                "distance": 480
+            },
+            {
+                "name": "ลำดวน",
+                "distance": 490
+            }
+        ]
+    },
+    {
+        "id": 22,
+        "province": "ศรีสะเกษ",
+        "districts": [
+            {
+                "name": "เมืองศรีสะเกษ",
+                "distance": 500
+            },
+            {
+                "name": "กันทรารมย์",
+                "distance": 510
+            },
+            {
+                "name": "ขุนหาญ",
+                "distance": 520
+            },
+            {
+                "name": "กันทรลักษ์",
+                "distance": 530
+            },
+            {
+                "name": "ราษีไศล",
+                "distance": 540
+            },
+            {
+                "name": "อุทุมพรพิสัย",
+                "distance": 550
+            },
+            {
+                "name": "ศรีรัตนะ",
+                "distance": 560
+            },
+            {
+                "name": "ยางชุมน้อย",
+                "distance": 570
+            },
+            {
+                "name": "น้ำเกลี้ยง",
+                "distance": 580
+            },
+            {
+                "name": "โนนคูณ",
+                "distance": 590
+            }
+        ]
+    },
+    {
+        "id": 23,
+        "province": "อุบลราชธานี",
+        "districts": [
+            {
+                "name": "เมืองอุบลราชธานี",
+                "distance": 600
+            },
+            {
+                "name": "วารินชำราบ",
+                "distance": 610
+            },
+            {
+                "name": "เดชอุดม",
+                "distance": 620
+            },
+            {
+                "name": "เขื่องใน",
+                "distance": 630
+            },
+            {
+                "name": "พิบูลมังสาหาร",
+                "distance": 640
+            },
+            {
+                "name": "ม่วงสามสิบ",
+                "distance": 650
+            },
+            {
+                "name": "โขงเจียม",
+                "distance": 660
+            },
+            {
+                "name": "ตระการพืชผล",
+                "distance": 670
+            },
+            {
+                "name": "ศรีเมืองใหม่",
+                "distance": 680
+            },
+            {
+                "name": "นาเยีย",
+                "distance": 690
+            }
+        ]
+    },
+    {
+        "id": 24,
+        "province": "ยโสธร",
+        "districts": [
+            {
+                "name": "เมืองยโสธร",
+                "distance": 500
+            },
+            {
+                "name": "คำเขื่อนแก้ว",
+                "distance": 510
+            },
+            {
+                "name": "ป่าติ้ว",
+                "distance": 520
+            },
+            {
+                "name": "มหาชนะชัย",
+                "distance": 530
+            },
+            {
+                "name": "เลิงนกทา",
+                "distance": 540
+            },
+            {
+                "name": "ค้อวัง",
+                "distance": 550
+            },
+            {
+                "name": "ทรายมูล",
+                "distance": 560
+            },
+            {
+                "name": "กุดชุม",
+                "distance": 570
+            },
+            {
+                "name": "ยางตลาด",
+                "distance": 580
+            },
+            {
+                "name": "นาแต้",
+                "distance": 590
+            }
+        ]
+    },
+    {
+        "id": 25,
+        "province": "ชัยภูมิ",
+        "districts": [
+            {
+                "name": "เมืองชัยภูมิ",
+                "distance": 300
+            },
+            {
+                "name": "บำเหน็จณรงค์",
+                "distance": 310
+            },
+            {
+                "name": "จัตุรัส",
+                "distance": 320
+            },
+            {
+                "name": "ภูเขียว",
+                "distance": 330
+            },
+            {
+                "name": "เกษตรสมบูรณ์",
+                "distance": 340
+            },
+            {
+                "name": "บ้านแท่น",
+                "distance": 350
+            },
+            {
+                "name": "แก้งคร้อ",
+                "distance": 360
+            },
+            {
+                "name": "หนองบัวแดง",
+                "distance": 370
+            },
+            {
+                "name": "คอนสวรรค์",
+                "distance": 380
+            },
+            {
+                "name": "เนินสง่า",
+                "distance": 390
+            }
+        ]
+    },
+    {
+        "id": 26,
+        "province": "อำนาจเจริญ",
+        "districts": [
+            {
+                "name": "เมืองอำนาจเจริญ",
+                "distance": 450
+            },
+            {
+                "name": "หัวตะพาน",
+                "distance": 460
+            },
+            {
+                "name": "เสนางคนิคม",
+                "distance": 470
+            },
+            {
+                "name": "ลืออำนาจ",
+                "distance": 480
+            },
+            {
+                "name": "ปทุมราชวงศา",
+                "distance": 490
+            },
+            {
+                "name": "ชานุมาน",
+                "distance": 500
+            },
+            {
+                "name": "น้ำปลีก",
+                "distance": 510
+            },
+            {
+                "name": "โนนโพธิ์",
+                "distance": 520
+            },
+            {
+                "name": "นาวัง",
+                "distance": 530
+            },
+            {
+                "name": "ดงบัง",
+                "distance": 540
+            }
+        ]
+    },
+    {
+        "id": 27,
+        "province": "บึงกาฬ",
+        "districts": [
+            {
+                "name": "เมืองบึงกาฬ",
+                "distance": 500
+            },
+            {
+                "name": "พรเจริญ",
+                "distance": 510
+            },
+            {
+                "name": "ศรีวิไล",
+                "distance": 520
+            },
+            {
+                "name": "โซ่พิสัย",
+                "distance": 530
+            },
+            {
+                "name": "บุ่งคล้า",
+                "distance": 540
+            },
+            {
+                "name": "บึงโขงหลง",
+                "distance": 550
+            },
+            {
+                "name": "เซกา",
+                "distance": 560
+            },
+            {
+                "name": "ปากคาด",
+                "distance": 570
+            },
+            {
+                "name": "หนองคาย",
+                "distance": 580
+            },
+            {
+                "name": "บ้านม่วง",
+                "distance": 590
+            }
+        ]
+    },
+    {
+        "id": 28,
+        "province": "หนองบัวลำภู",
+        "districts": [
+            {
+                "name": "เมืองหนองบัวลำภู",
+                "distance": 400
+            },
+            {
+                "name": "นากลาง",
+                "distance": 410
+            },
+            {
+                "name": "ศรีบุญเรือง",
+                "distance": 420
+            },
+            {
+                "name": "สุวรรณคูหา",
+                "distance": 430
+            },
+            {
+                "name": "โนนสัง",
+                "distance": 440
+            },
+            {
+                "name": "หนองหิน",
+                "distance": 450
+            },
+            {
+                "name": "บ้านขาม",
+                "distance": 460
+            },
+            {
+                "name": "บ้านกลาง",
+                "distance": 470
+            },
+            {
+                "name": "เขื่องใน",
+                "distance": 480
+            },
+            {
+                "name": "วารินชำราบ",
+                "distance": 490
+            }
+        ]
+    },
+    {
+        "id": 29,
+        "province": "ขอนแก่น",
+        "districts": [
+            {
+                "name": "เมืองขอนแก่น",
+                "distance": 350
+            },
+            {
+                "name": "บ้านไผ่",
+                "distance": 360
+            },
+            {
+                "name": "ชุมแพ",
+                "distance": 370
+            },
+            {
+                "name": "กระนวน",
+                "distance": 380
+            },
+            {
+                "name": "เขาสวนกวาง",
+                "distance": 390
+            },
+            {
+                "name": "มัญจาคีรี",
+                "distance": 400
+            },
+            {
+                "name": "เปือยน้อย",
+                "distance": 410
+            },
+            {
+                "name": "พระยืน",
+                "distance": 420
+            },
+            {
+                "name": "บ้านฝาง",
+                "distance": 430
+            },
+            {
+                "name": "หนองเรือ",
+                "distance": 440
+            }
+        ]
+    },
+    {
+        "id": 30,
+        "province": "อุดรธานี",
+        "districts": [
+            {
+                "name": "เมืองอุดรธานี",
+                "distance": 400
+            },
+            {
+                "name": "กุมภวาปี",
+                "distance": 410
+            },
+            {
+                "name": "หนองหาน",
+                "distance": 420
+            },
+            {
+                "name": "บ้านผือ",
+                "distance": 430
+            },
+            {
+                "name": "น้ำโสม",
+                "distance": 440
+            },
+            {
+                "name": "หนองแสง",
+                "distance": 450
+            },
+            {
+                "name": "เพ็ญ",
+                "distance": 460
+            },
+            {
+                "name": "วังสามหมอ",
+                "distance": 470
+            },
+            {
+                "name": "สร้างคอม",
+                "distance": 480
+            },
+            {
+                "name": "โนนสะอาด",
+                "distance": 490
+            }
+        ]
+    },
+    {
+        "id": 31,
+        "province": "เลย",
+        "districts": [
+            {
+                "name": "เมืองเลย",
+                "distance": 500
+            },
+            {
+                "name": "เชียงคาน",
+                "distance": 510
+            },
+            {
+                "name": "นาแห้ว",
+                "distance": 520
+            },
+            {
+                "name": "ปากชม",
+                "distance": 530
+            },
+            {
+                "name": "ด่านซ้าย",
+                "distance": 540
+            },
+            {
+                "name": "ภูเรือ",
+                "distance": 550
+            },
+            {
+                "name": "นาเฉลียง",
+                "distance": 560
+            },
+            {
+                "name": "ท่าลี่",
+                "distance": 570
+            },
+            {
+                "name": "ภูกระดึง",
+                "distance": 580
+            },
+            {
+                "name": "วังสะพุง",
+                "distance": 590
+            }
+        ]
+    },
+    {
+        "id": 32,
+        "province": "หนองคาย",
+        "districts": [
+            {
+                "name": "เมืองหนองคาย",
+                "distance": 510
+            },
+            {
+                "name": "โพนพิสัย",
+                "distance": 520
+            },
+            {
+                "name": "ศรีเชียงใหม่",
+                "distance": 530
+            },
+            {
+                "name": "สังคม",
+                "distance": 540
+            },
+            {
+                "name": "ท่าบ่อ",
+                "distance": 550
+            },
+            {
+                "name": "เฝ้าไร่",
+                "distance": 560
+            },
+            {
+                "name": "รัตนวาปี",
+                "distance": 570
+            },
+            {
+                "name": "น้ำโสม",
+                "distance": 580
+            },
+            {
+                "name": "บ้านหม้อ",
+                "distance": 590
+            },
+            {
+                "name": "โพนทอง",
+                "distance": 600
+            }
+        ]
+    },
+    {
+        "id": 33,
+        "province": "มหาสารคาม",
+        "districts": [
+            {
+                "name": "เมืองมหาสารคาม",
+                "distance": 400
+            },
+            {
+                "name": "วาปีปทุม",
+                "distance": 410
+            },
+            {
+                "name": "บรบือ",
+                "distance": 420
+            },
+            {
+                "name": "โกสุมพิสัย",
+                "distance": 430
+            },
+            {
+                "name": "กันทรวิชัย",
+                "distance": 440
+            },
+            {
+                "name": "เชียงยืน",
+                "distance": 450
+            },
+            {
+                "name": "พยัคฆภูมิพิสัย",
+                "distance": 460
+            },
+            {
+                "name": "แกดำ",
+                "distance": 470
+            },
+            {
+                "name": "ยางตลาด",
+                "distance": 480
+            },
+            {
+                "name": "กุดรัง",
+                "distance": 490
+            }
+        ]
+    },
+    {
+        "id": 34,
+        "province": "ร้อยเอ็ด",
+        "districts": [
+            {
+                "name": "เมืองร้อยเอ็ด",
+                "distance": 450
+            },
+            {
+                "name": "โพนทอง",
+                "distance": 460
+            },
+            {
+                "name": "จตุรพักตรพิมาน",
+                "distance": 470
+            },
+            {
+                "name": "เสลภูมิ",
+                "distance": 480
+            },
+            {
+                "name": "สุวรรณภูมิ",
+                "distance": 490
+            },
+            {
+                "name": "เกษตรวิสัย",
+                "distance": 500
+            },
+            {
+                "name": "ทุ่งเขาหลวง",
+                "distance": 510
+            },
+            {
+                "name": "เชียงขวัญ",
+                "distance": 520
+            },
+            {
+                "name": "พนมไพร",
+                "distance": 530
+            },
+            {
+                "name": "หนองพอก",
+                "distance": 540
+            }
+        ]
+    },
+    {
+        "id": 35,
+        "province": "กาฬสินธุ์",
+        "districts": [
+            {
+                "name": "เมืองกาฬสินธุ์",
+                "distance": 420
+            },
+            {
+                "name": "กมลาไสย",
+                "distance": 430
+            },
+            {
+                "name": "ยางตลาด",
+                "distance": 440
+            },
+            {
+                "name": "สมเด็จ",
+                "distance": 450
+            },
+            {
+                "name": "คำม่วง",
+                "distance": 460
+            },
+            {
+                "name": "กุฉินารายณ์",
+                "distance": 470
+            },
+            {
+                "name": "เขาวง",
+                "distance": 480
+            },
+            {
+                "name": "ท่าคันโท",
+                "distance": 490
+            },
+            {
+                "name": "ห้วยเม็ก",
+                "distance": 500
+            },
+            {
+                "name": "สหัสขันธ์",
+                "distance": 510
+            }
+        ]
+    },
+    {
+        "id": 36,
+        "province": "สกลนคร",
+        "districts": [
+            {
+                "name": "เมืองสกลนคร",
+                "distance": 520
+            },
+            {
+                "name": "พังโคน",
+                "distance": 530
+            },
+            {
+                "name": "สว่างแดนดิน",
+                "distance": 540
+            },
+            {
+                "name": "พรรณานิคม",
+                "distance": 550
+            },
+            {
+                "name": "กุสุมาลย์",
+                "distance": 560
+            },
+            {
+                "name": "คำตากล้า",
+                "distance": 570
+            },
+            {
+                "name": "อากาศอำนวย",
+                "distance": 580
+            },
+            {
+                "name": "วาริชภูมิ",
+                "distance": 590
+            },
+            {
+                "name": "บ้านม่วง",
+                "distance": 600
+            },
+            {
+                "name": "โคกศรีสุพรรณ",
+                "distance": 610
+            }
+        ]
+    },
+    {
+        "id": 37,
+        "province": "นครพนม",
+        "districts": [
+            {
+                "name": "เมืองนครพนม",
+                "distance": 600
+            },
+            {
+                "name": "ธาตุพนม",
+                "distance": 610
+            },
+            {
+                "name": "เรณูนคร",
+                "distance": 620
+            },
+            {
+                "name": "นาแก",
+                "distance": 630
+            },
+            {
+                "name": "ปลาปาก",
+                "distance": 640
+            },
+            {
+                "name": "บ้านแพง",
+                "distance": 650
+            },
+            {
+                "name": "โพนสวรรค์",
+                "distance": 660
+            },
+            {
+                "name": "ท่าอุเทน",
+                "distance": 670
+            },
+            {
+                "name": "นาหว้า",
+                "distance": 680
+            },
+            {
+                "name": "ศรีสงคราม",
+                "distance": 690
+            }
+        ]
+    },
+    {
+        "id": 38,
+        "province": "มุกดาหาร",
+        "districts": [
+            {
+                "name": "เมืองมุกดาหาร",
+                "distance": 500
+            },
+            {
+                "name": "ดอนตาล",
+                "distance": 510
+            },
+            {
+                "name": "คำชะอี",
+                "distance": 520
+            },
+            {
+                "name": "นิคมคำสร้อย",
+                "distance": 530
+            },
+            {
+                "name": "หว้านใหญ่",
+                "distance": 540
+            },
+            {
+                "name": "หนองสูง",
+                "distance": 550
+            },
+            {
+                "name": "บ้านแก้ง",
+                "distance": 560
+            },
+            {
+                "name": "บ้านต้อง",
+                "distance": 570
+            },
+            {
+                "name": "คำบง",
+                "distance": 580
+            },
+            {
+                "name": "คำอาฮวน",
+                "distance": 590
+            }
+        ]
+    },
+    {
+        "id": 39,
+        "province": "เชียงใหม่",
+        "districts": [
+            {
+                "name": "เมืองเชียงใหม่",
+                "distance": 700
+            },
+            {
+                "name": "ดอยสะเก็ด",
+                "distance": 710
+            },
+            {
+                "name": "สันกำแพง",
+                "distance": 720
+            },
+            {
+                "name": "แม่ริม",
+                "distance": 730
+            },
+            {
+                "name": "หางดง",
+                "distance": 740
+            },
+            {
+                "name": "แม่แตง",
+                "distance": 750
+            },
+            {
+                "name": "สันทราย",
+                "distance": 760
+            },
+            {
+                "name": "สะเมิง",
+                "distance": 770
+            },
+            {
+                "name": "ดอยเต่า",
+                "distance": 780
+            },
+            {
+                "name": "ฮอด",
+                "distance": 790
+            }
+        ]
+    },
+    {
+        "id": 40,
+        "province": "ลำพูน",
+        "districts": [
+            {
+                "name": "เมืองลำพูน",
+                "distance": 680
+            },
+            {
+                "name": "บ้านโฮ่ง",
+                "distance": 690
+            },
+            {
+                "name": "ลี้",
+                "distance": 700
+            },
+            {
+                "name": "ทุ่งหัวช้าง",
+                "distance": 710
+            },
+            {
+                "name": "แม่ทา",
+                "distance": 720
+            },
+            {
+                "name": "ป่าซาง",
+                "distance": 730
+            },
+            {
+                "name": "เวียงหนองล่อง",
+                "distance": 740
+            },
+            {
+                "name": "สะเมิง",
+                "distance": 750
+            },
+            {
+                "name": "ดอยหล่อ",
+                "distance": 760
+            },
+            {
+                "name": "ท่าข้าม",
+                "distance": 770
+            }
+        ]
+    },
+    {
+        "id": 41,
+        "province": "ลำปาง",
+        "districts": [
+            {
+                "name": "เมืองลำปาง",
+                "distance": 700
+            },
+            {
+                "name": "เกาะคา",
+                "distance": 710
+            },
+            {
+                "name": "แม่เมาะ",
+                "distance": 720
+            },
+            {
+                "name": "งาว",
+                "distance": 730
+            },
+            {
+                "name": "ห้างฉัตร",
+                "distance": 740
+            },
+            {
+                "name": "เสริมงาม",
+                "distance": 750
+            },
+            {
+                "name": "แจ้ห่ม",
+                "distance": 760
+            },
+            {
+                "name": "วังเหนือ",
+                "distance": 770
+            },
+            {
+                "name": "เถิน",
+                "distance": 780
+            },
+            {
+                "name": "สบปราบ",
+                "distance": 790
+            }
+        ]
+    },
+    {
+        "id": 42,
+        "province": "อุตรดิตถ์",
+        "districts": [
+            {
+                "name": "เมืองอุตรดิตถ์",
+                "distance": 600
+            },
+            {
+                "name": "ลับแล",
+                "distance": 610
+            },
+            {
+                "name": "ตรอน",
+                "distance": 620
+            },
+            {
+                "name": "พิชัย",
+                "distance": 630
+            },
+            {
+                "name": "น้ำปาด",
+                "distance": 640
+            },
+            {
+                "name": "ท่าปลา",
+                "distance": 650
+            },
+            {
+                "name": "ฟากท่า",
+                "distance": 660
+            },
+            {
+                "name": "บ้านโคก",
+                "distance": 670
+            },
+            {
+                "name": "ทองแสนขัน",
+                "distance": 680
+            },
+            {
+                "name": "คลองโพธิ์",
+                "distance": 690
+            }
+        ]
+    },
+    {
+        "id": 43,
+        "province": "แพร่",
+        "districts": [
+            {
+                "name": "เมืองแพร่",
+                "distance": 650
+            },
+            {
+                "name": "ร้องกวาง",
+                "distance": 660
+            },
+            {
+                "name": "ลอง",
+                "distance": 670
+            },
+            {
+                "name": "สอง",
+                "distance": 680
+            },
+            {
+                "name": "วังชิ้น",
+                "distance": 690
+            },
+            {
+                "name": "เด่นชัย",
+                "distance": 700
+            },
+            {
+                "name": "หนองม่วงไข่",
+                "distance": 710
+            },
+            {
+                "name": "น้ำปาด",
+                "distance": 720
+            },
+            {
+                "name": "บ้านกลาง",
+                "distance": 730
+            },
+            {
+                "name": "แม่คำมี",
+                "distance": 740
+            }
+        ]
+    },
+    {
+        "id": 44,
+        "province": "น่าน",
+        "districts": [
+            {
+                "name": "เมืองน่าน",
+                "distance": 800
+            },
+            {
+                "name": "ปัว",
+                "distance": 810
+            },
+            {
+                "name": "เชียงกลาง",
+                "distance": 820
+            },
+            {
+                "name": "แม่จริม",
+                "distance": 830
+            },
+            {
+                "name": "เวียงสา",
+                "distance": 840
+            },
+            {
+                "name": "บ่อเกลือ",
+                "distance": 850
+            },
+            {
+                "name": "ท่าวังผา",
+                "distance": 860
+            },
+            {
+                "name": "สองแคว",
+                "distance": 870
+            },
+            {
+                "name": "นาหมื่น",
+                "distance": 880
+            },
+            {
+                "name": "สันติสุข",
+                "distance": 890
+            }
+        ]
+    },
+    {
+        "id": 45,
+        "province": "พะเยา",
+        "districts": [
+            {
+                "name": "เมืองพะเยา",
+                "distance": 750
+            },
+            {
+                "name": "แม่ใจ",
+                "distance": 760
+            },
+            {
+                "name": "ดอกคำใต้",
+                "distance": 770
+            },
+            {
+                "name": "จุน",
+                "distance": 780
+            },
+            {
+                "name": "ปง",
+                "distance": 790
+            },
+            {
+                "name": "เชียงคำ",
+                "distance": 800
+            },
+            {
+                "name": "ภูซาง",
+                "distance": 810
+            },
+            {
+                "name": "เชียงม่วน",
+                "distance": 820
+            },
+            {
+                "name": "บ้านต๋อม",
+                "distance": 830
+            },
+            {
+                "name": "ห้วยลาน",
+                "distance": 840
+            }
+        ]
+    },
+    {
+        "id": 46,
+        "province": "เชียงราย",
+        "districts": [
+            {
+                "name": "เมืองเชียงราย",
+                "distance": 900
+            },
+            {
+                "name": "แม่สาย",
+                "distance": 910
+            },
+            {
+                "name": "เชียงแสน",
+                "distance": 920
+            },
+            {
+                "name": "เวียงชัย",
+                "distance": 930
+            },
+            {
+                "name": "พาน",
+                "distance": 940
+            },
+            {
+                "name": "แม่จัน",
+                "distance": 950
+            },
+            {
+                "name": "เทิง",
+                "distance": 960
+            },
+            {
+                "name": "ป่าแดด",
+                "distance": 970
+            },
+            {
+                "name": "เวียงป่าเป้า",
+                "distance": 980
+            },
+            {
+                "name": "แม่สรวย",
+                "distance": 990
+            }
+        ]
+    },
+    {
+        "id": 47,
+        "province": "แม่ฮ่องสอน",
+        "districts": [
+            {
+                "name": "เมืองแม่ฮ่องสอน",
+                "distance": 850
+            },
+            {
+                "name": "ปาย",
+                "distance": 860
+            },
+            {
+                "name": "ปางมะผ้า",
+                "distance": 870
+            },
+            {
+                "name": "แม่ลาน้อย",
+                "distance": 880
+            },
+            {
+                "name": "ขุนยวม",
+                "distance": 890
+            },
+            {
+                "name": "แม่สะเรียง",
+                "distance": 900
+            },
+            {
+                "name": "สบเมย",
+                "distance": 910
+            },
+            {
+                "name": "บ้านจ่า",
+                "distance": 920
+            },
+            {
+                "name": "บ้านม่วง",
+                "distance": 930
+            },
+            {
+                "name": "วังผา",
+                "distance": 940
+            }
+        ]
+    },
+    {
+        "id": 48,
+        "province": "นครสวรรค์",
+        "districts": [
+            {
+                "name": "เมืองนครสวรรค์",
+                "distance": 200
+            },
+            {
+                "name": "โกรกพระ",
+                "distance": 210
+            },
+            {
+                "name": "ชุมแสง",
+                "distance": 220
+            },
+            {
+                "name": "หนองบัว",
+                "distance": 230
+            },
+            {
+                "name": "ไพศาลี",
+                "distance": 240
+            },
+            {
+                "name": "ลาดยาว",
+                "distance": 250
+            },
+            {
+                "name": "ท่าตะโก",
+                "distance": 260
+            },
+            {
+                "name": "ตาคลี",
+                "distance": 270
+            },
+            {
+                "name": "บรรพตพิสัย",
+                "distance": 280
+            },
+            {
+                "name": "แม่วงก์",
+                "distance": 290
+            }
+        ]
+    },
+    {
+        "id": 49,
+        "province": "อุทัยธานี",
+        "districts": [
+            {
+                "name": "เมืองอุทัยธานี",
+                "distance": 220
+            },
+            {
+                "name": "ทัพทัน",
+                "distance": 230
+            },
+            {
+                "name": "หนองฉาง",
+                "distance": 240
+            },
+            {
+                "name": "หนองขาหย่าง",
+                "distance": 250
+            },
+            {
+                "name": "บ้านไร่",
+                "distance": 260
+            },
+            {
+                "name": "ลานสัก",
+                "distance": 270
+            },
+            {
+                "name": "ห้วยคต",
+                "distance": 280
+            },
+            {
+                "name": "บ้านโคก",
+                "distance": 290
+            },
+            {
+                "name": "ท่าซุง",
+                "distance": 300
+            },
+            {
+                "name": "สะนำ",
+                "distance": 310
+            }
+        ]
+    },
+    {
+        "id": 50,
+        "province": "กำแพงเพชร",
+        "districts": [
+            {
+                "name": "เมืองกำแพงเพชร",
+                "distance": 300
+            },
+            {
+                "name": "ขาณุวรลักษบุรี",
+                "distance": 310
+            },
+            {
+                "name": "คลองลาน",
+                "distance": 320
+            },
+            {
+                "name": "คลองขลุง",
+                "distance": 330
+            },
+            {
+                "name": "พรานกระต่าย",
+                "distance": 340
+            },
+            {
+                "name": "ลานกระบือ",
+                "distance": 350
+            },
+            {
+                "name": "ไทรงาม",
+                "distance": 360
+            },
+            {
+                "name": "ปางศิลาทอง",
+                "distance": 370
+            },
+            {
+                "name": "บึงสามัคคี",
+                "distance": 380
+            },
+            {
+                "name": "ทรายทองวัฒนา",
+                "distance": 390
+            }
+        ]
+    },
+    {
+        "id": 51,
+        "province": "ตาก",
+        "districts": [
+            {
+                "name": "เมืองตาก",
+                "distance": 450
+            },
+            {
+                "name": "แม่สอด",
+                "distance": 460
+            },
+            {
+                "name": "บ้านตาก",
+                "distance": 470
+            },
+            {
+                "name": "สามเงา",
+                "distance": 480
+            },
+            {
+                "name": "พบพระ",
+                "distance": 490
+            },
+            {
+                "name": "อุ้มผาง",
+                "distance": 500
+            },
+            {
+                "name": "วังเจ้า",
+                "distance": 510
+            },
+            {
+                "name": "แม่ระมาด",
+                "distance": 520
+            },
+            {
+                "name": "ท่าสองยาง",
+                "distance": 530
+            },
+            {
+                "name": "ตากใบ",
+                "distance": 540
+            }
+        ]
+    },
+    {
+        "id": 52,
+        "province": "สุโขทัย",
+        "districts": [
+            {
+                "name": "เมืองสุโขทัย",
+                "distance": 380
+            },
+            {
+                "name": "ศรีสำโรง",
+                "distance": 390
+            },
+            {
+                "name": "สวรรคโลก",
+                "distance": 400
+            },
+            {
+                "name": "ศรีนคร",
+                "distance": 410
+            },
+            {
+                "name": "กงไกรลาศ",
+                "distance": 420
+            },
+            {
+                "name": "ทุ่งเสลี่ยม",
+                "distance": 430
+            },
+            {
+                "name": "บ้านด่านลานหอย",
+                "distance": 440
+            },
+            {
+                "name": "คีรีมาศ",
+                "distance": 450
+            },
+            {
+                "name": "บ้านใหม่ไชยมงคล",
+                "distance": 460
+            },
+            {
+                "name": "นาเชือก",
+                "distance": 470
+            }
+        ]
+    },
+    {
+        "id": 53,
+        "province": "พิษณุโลก",
+        "districts": [
+            {
+                "name": "เมืองพิษณุโลก",
+                "distance": 400
+            },
+            {
+                "name": "วังทอง",
+                "distance": 410
+            },
+            {
+                "name": "บางกระทุ่ม",
+                "distance": 420
+            },
+            {
+                "name": "นครไทย",
+                "distance": 430
+            },
+            {
+                "name": "พรหมพิราม",
+                "distance": 440
+            },
+            {
+                "name": "ชาติตระการ",
+                "distance": 450
+            },
+            {
+                "name": "เนินมะปราง",
+                "distance": 460
+            },
+            {
+                "name": "วัดโบสถ์",
+                "distance": 470
+            },
+            {
+                "name": "บ้านกลาง",
+                "distance": 480
+            },
+            {
+                "name": "บางพระ",
+                "distance": 490
+            }
+        ]
+    },
+    {
+        "id": 54,
+        "province": "พิจิตร",
+        "districts": [
+            {
+                "name": "เมืองพิจิตร",
+                "distance": 300
+            },
+            {
+                "name": "ตะพานหิน",
+                "distance": 310
+            },
+            {
+                "name": "สามง่าม",
+                "distance": 320
+            },
+            {
+                "name": "โพทะเล",
+                "distance": 330
+            },
+            {
+                "name": "บางมูลนาก",
+                "distance": 340
+            },
+            {
+                "name": "วชิรบารมี",
+                "distance": 350
+            },
+            {
+                "name": "บึงนาราง",
+                "distance": 360
+            },
+            {
+                "name": "ดงเจริญ",
+                "distance": 370
+            },
+            {
+                "name": "ทับคล้อ",
+                "distance": 380
+            },
+            {
+                "name": "โพธิ์ประทับช้าง",
+                "distance": 390
+            }
+        ]
+    },
+    {
+        "id": 55,
+        "province": "เพชรบูรณ์",
+        "districts": [
+            {
+                "name": "เมืองเพชรบูรณ์",
+                "distance": 340
+            },
+            {
+                "name": "หล่มสัก",
+                "distance": 350
+            },
+            {
+                "name": "หล่มเก่า",
+                "distance": 360
+            },
+            {
+                "name": "วิเชียรบุรี",
+                "distance": 370
+            },
+            {
+                "name": "ศรีเทพ",
+                "distance": 380
+            },
+            {
+                "name": "บึงสามพัน",
+                "distance": 390
+            },
+            {
+                "name": "น้ำหนาว",
+                "distance": 400
+            },
+            {
+                "name": "ชนแดน",
+                "distance": 410
+            },
+            {
+                "name": "เขาค้อ",
+                "distance": 420
+            },
+            {
+                "name": "วังโป่ง",
+                "distance": 430
+            }
+        ]
+    },
+    {
+        "id": 56,
+        "province": "ราชบุรี",
+        "districts": [
+            {
+                "name": "เมืองราชบุรี",
+                "distance": 100
+            },
+            {
+                "name": "โพธาราม",
+                "distance": 110
+            },
+            {
+                "name": "บ้านโป่ง",
+                "distance": 120
+            },
+            {
+                "name": "จอมบึง",
+                "distance": 130
+            },
+            {
+                "name": "ดำเนินสะดวก",
+                "distance": 140
+            },
+            {
+                "name": "ปากท่อ",
+                "distance": 150
+            },
+            {
+                "name": "วัดเพลง",
+                "distance": 160
+            },
+            {
+                "name": "บางแพ",
+                "distance": 170
+            },
+            {
+                "name": "ท่ามะกา",
+                "distance": 180
+            },
+            {
+                "name": "บ้านคา",
+                "distance": 190
+            }
+        ]
+    },
+    {
+        "id": 57,
+        "province": "กาญจนบุรี",
+        "districts": [
+            {
+                "name": "เมืองกาญจนบุรี",
+                "distance": 150
+            },
+            {
+                "name": "ไทรโยค",
+                "distance": 160
+            },
+            {
+                "name": "บ่อพลอย",
+                "distance": 170
+            },
+            {
+                "name": "ทองผาภูมิ",
+                "distance": 180
+            },
+            {
+                "name": "สังขละบุรี",
+                "distance": 190
+            },
+            {
+                "name": "ศรีสวัสดิ์",
+                "distance": 200
+            },
+            {
+                "name": "ท่ามะกา",
+                "distance": 210
+            },
+            {
+                "name": "ท่าม่วง",
+                "distance": 220
+            },
+            {
+                "name": "เลาขวัญ",
+                "distance": 230
+            },
+            {
+                "name": "ด่านมะขามเตี้ย",
+                "distance": 240
+            }
+        ]
+    },
+    {
+        "id": 58,
+        "province": "สุพรรณบุรี",
+        "districts": [
+            {
+                "name": "เมืองสุพรรณบุรี",
+                "distance": 120
+            },
+            {
+                "name": "บางปลาม้า",
+                "distance": 130
+            },
+            {
+                "name": "สองพี่น้อง",
+                "distance": 140
+            },
+            {
+                "name": "อู่ทอง",
+                "distance": 150
+            },
+            {
+                "name": "ดอนเจดีย์",
+                "distance": 160
+            },
+            {
+                "name": "หนองหญ้าไซ",
+                "distance": 170
+            },
+            {
+                "name": "ด่านช้าง",
+                "distance": 180
+            },
+            {
+                "name": "ศรีประจันต์",
+                "distance": 190
+            },
+            {
+                "name": "สามชุก",
+                "distance": 200
+            },
+            {
+                "name": "สวนแตง",
+                "distance": 210
+            }
+        ]
+    },
+    {
+        "id": 59,
+        "province": "นครปฐม",
+        "districts": [
+            {
+                "name": "เมืองนครปฐม",
+                "distance": 80
+            },
+            {
+                "name": "กำแพงแสน",
+                "distance": 90
+            },
+            {
+                "name": "นครชัยศรี",
+                "distance": 100
+            },
+            {
+                "name": "ดอนตูม",
+                "distance": 110
+            },
+            {
+                "name": "บางเลน",
+                "distance": 120
+            },
+            {
+                "name": "สามพราน",
+                "distance": 130
+            },
+            {
+                "name": "พุทธมณฑล",
+                "distance": 140
+            },
+            {
+                "name": "ทุ่งลูกนก",
+                "distance": 150
+            },
+            {
+                "name": "ศาลายา",
+                "distance": 160
+            },
+            {
+                "name": "หนองปากโลง",
+                "distance": 170
+            }
+        ]
+    },
+    {
+        "id": 60,
+        "province": "สมุทรสาคร",
+        "districts": [
+            {
+                "name": "เมืองสมุทรสาคร",
+                "distance": 60
+            },
+            {
+                "name": "บ้านแพ้ว",
+                "distance": 70
+            },
+            {
+                "name": "กระทุ่มแบน",
+                "distance": 80
+            },
+            {
+                "name": "บางน้ำจืด",
+                "distance": 90
+            },
+            {
+                "name": "คลองมะเดื่อ",
+                "distance": 100
+            },
+            {
+                "name": "ท่าทราย",
+                "distance": 110
+            },
+            {
+                "name": "บางปลา",
+                "distance": 120
+            },
+            {
+                "name": "โคกขาม",
+                "distance": 130
+            },
+            {
+                "name": "บ้านคลอง",
+                "distance": 140
+            },
+            {
+                "name": "บางกระเจ้า",
+                "distance": 150
+            }
+        ]
+    },
+    {
+        "id": 61,
+        "province": "สมุทรสงคราม",
+        "districts": [
+            {
+                "name": "เมืองสมุทรสงคราม",
+                "distance": 65
+            },
+            {
+                "name": "อัมพวา",
+                "distance": 70
+            },
+            {
+                "name": "บางคนที",
+                "distance": 75
+            },
+            {
+                "name": "ดอนมะโนรา",
+                "distance": 80
+            },
+            {
+                "name": "แม่กลอง",
+                "distance": 85
+            },
+            {
+                "name": "คลองเขิน",
+                "distance": 90
+            },
+            {
+                "name": "บางกระบือ",
+                "distance": 95
+            },
+            {
+                "name": "บ้านปรก",
+                "distance": 100
+            },
+            {
+                "name": "แหลมใหญ่",
+                "distance": 105
+            },
+            {
+                "name": "ยายพิมพ์",
+                "distance": 110
+            }
+        ]
+    },
+    {
+        "id": 62,
+        "province": "เพชรบุรี",
+        "districts": [
+            {
+                "name": "เมืองเพชรบุรี",
+                "distance": 120
+            },
+            {
+                "name": "ชะอำ",
+                "distance": 130
+            },
+            {
+                "name": "บ้านแหลม",
+                "distance": 140
+            },
+            {
+                "name": "ท่ายาง",
+                "distance": 150
+            },
+            {
+                "name": "แก่งกระจาน",
+                "distance": 160
+            },
+            {
+                "name": "หนองหญ้าปล้อง",
+                "distance": 170
+            },
+            {
+                "name": "เขาย้อย",
+                "distance": 180
+            },
+            {
+                "name": "บ้านลาด",
+                "distance": 190
+            },
+            {
+                "name": "ดอนขุนห้วย",
+                "distance": 200
+            },
+            {
+                "name": "วังตะโก",
+                "distance": 210
+            }
+        ]
+    },
+    {
+        "id": 63,
+        "province": "ประจวบคีรีขันธ์",
+        "districts": [
+            {
+                "name": "เมืองประจวบคีรีขันธ์",
+                "distance": 250
+            },
+            {
+                "name": "หัวหิน",
+                "distance": 260
+            },
+            {
+                "name": "ปราณบุรี",
+                "distance": 270
+            },
+            {
+                "name": "บางสะพาน",
+                "distance": 280
+            },
+            {
+                "name": "ทับสะแก",
+                "distance": 290
+            },
+            {
+                "name": "กุยบุรี",
+                "distance": 300
+            },
+            {
+                "name": "สามร้อยยอด",
+                "distance": 310
+            },
+            {
+                "name": "บ้านกรูด",
+                "distance": 320
+            },
+            {
+                "name": "บางสะพานน้อย",
+                "distance": 330
+            },
+            {
+                "name": "ดอนสัก",
+                "distance": 340
+            }
+        ]
+    },
+    {
+        "id": 64,
+        "province": "นครศรีธรรมราช",
+        "districts": [
+            {
+                "name": "เมืองนครศรีธรรมราช",
+                "distance": 600
+            },
+            {
+                "name": "ทุ่งสง",
+                "distance": 610
+            },
+            {
+                "name": "สิชล",
+                "distance": 620
+            },
+            {
+                "name": "หัวไทร",
+                "distance": 630
+            },
+            {
+                "name": "เชียรใหญ่",
+                "distance": 640
+            },
+            {
+                "name": "นาบอน",
+                "distance": 650
+            },
+            {
+                "name": "ท่าศาลา",
+                "distance": 660
+            },
+            {
+                "name": "พิปูน",
+                "distance": 670
+            },
+            {
+                "name": "ชะอวด",
+                "distance": 680
+            },
+            {
+                "name": "จุฬาภรณ์",
+                "distance": 690
+            }
+        ]
+    },
+    {
+        "id": 65,
+        "province": "กระบี่",
+        "districts": [
+            {
+                "name": "เมืองกระบี่",
+                "distance": 700
+            },
+            {
+                "name": "อ่าวลึก",
+                "distance": 710
+            },
+            {
+                "name": "เกาะลันตา",
+                "distance": 720
+            },
+            {
+                "name": "คลองท่อม",
+                "distance": 730
+            },
+            {
+                "name": "เขาพนม",
+                "distance": 740
+            },
+            {
+                "name": "ปลายพระยา",
+                "distance": 750
+            },
+            {
+                "name": "ลำทับ",
+                "distance": 760
+            },
+            {
+                "name": "เหนือคลอง",
+                "distance": 770
+            },
+            {
+                "name": "บ้านในสระ",
+                "distance": 780
+            },
+            {
+                "name": "ห้วยลึก",
+                "distance": 790
+            }
+        ]
+    },
+    {
+        "id": 66,
+        "province": "พังงา",
+        "districts": [
+            {
+                "name": "เมืองพังงา",
+                "distance": 800
+            },
+            {
+                "name": "ท้ายเหมือง",
+                "distance": 810
+            },
+            {
+                "name": "ตะกั่วป่า",
+                "distance": 820
+            },
+            {
+                "name": "คุระบุรี",
+                "distance": 830
+            },
+            {
+                "name": "เกาะยาว",
+                "distance": 840
+            },
+            {
+                "name": "ตะกั่วทุ่ง",
+                "distance": 850
+            },
+            {
+                "name": "บ้านย่าน",
+                "distance": 860
+            },
+            {
+                "name": "บางเตย",
+                "distance": 870
+            },
+            {
+                "name": "บ้านพระแสง",
+                "distance": 880
+            },
+            {
+                "name": "บางเหรียง",
+                "distance": 890
+            }
+        ]
+    },
+    {
+        "id": 67,
+        "province": "ภูเก็ต",
+        "districts": [
+            {
+                "name": "เมืองภูเก็ต",
+                "distance": 850
+            },
+            {
+                "name": "กะทู้",
+                "distance": 860
+            },
+            {
+                "name": "ถลาง",
+                "distance": 870
+            },
+            {
+                "name": "ป่าตอง",
+                "distance": 880
+            },
+            {
+                "name": "ฉลอง",
+                "distance": 890
+            },
+            {
+                "name": "ราไวย์",
+                "distance": 900
+            },
+            {
+                "name": "ไม้ขาว",
+                "distance": 910
+            },
+            {
+                "name": "บ้านกระทิง",
+                "distance": 920
+            },
+            {
+                "name": "ป่าคลอก",
+                "distance": 930
+            },
+            {
+                "name": "หาดสุรินทร์",
+                "distance": 940
+            }
+        ]
+    },
+    {
+        "id": 68,
+        "province": "สุราษฎร์ธานี",
+        "districts": [
+            {
+                "name": "เมืองสุราษฎร์ธานี",
+                "distance": 650
+            },
+            {
+                "name": "เกาะสมุย",
+                "distance": 660
+            },
+            {
+                "name": "เกาะพะงัน",
+                "distance": 670
+            },
+            {
+                "name": "ดอนสัก",
+                "distance": 680
+            },
+            {
+                "name": "กาญจนดิษฐ์",
+                "distance": 690
+            },
+            {
+                "name": "ไชยา",
+                "distance": 700
+            },
+            {
+                "name": "ท่าชนะ",
+                "distance": 710
+            },
+            {
+                "name": "พุนพิน",
+                "distance": 720
+            },
+            {
+                "name": "บ้านนาสาร",
+                "distance": 730
+            },
+            {
+                "name": "บ้านตาขุน",
+                "distance": 740
+            }
+        ]
+    },
+    {
+        "id": 69,
+        "province": "ระนอง",
+        "districts": [
+            {
+                "name": "เมืองระนอง",
+                "distance": 550
+            },
+            {
+                "name": "กะเปอร์",
+                "distance": 560
+            },
+            {
+                "name": "กระบุรี",
+                "distance": 570
+            },
+            {
+                "name": "ละอุ่น",
+                "distance": 580
+            },
+            {
+                "name": "สุขสำราญ",
+                "distance": 590
+            },
+            {
+                "name": "ปากจั่น",
+                "distance": 600
+            },
+            {
+                "name": "บางหิน",
+                "distance": 610
+            },
+            {
+                "name": "บางเจ้า",
+                "distance": 620
+            },
+            {
+                "name": "บ้านกลาง",
+                "distance": 630
+            },
+            {
+                "name": "บ้านอ่าว",
+                "distance": 640
+            }
+        ]
+    },
+    {
+        "id": 70,
+        "province": "ชุมพร",
+        "districts": [
+            {
+                "name": "เมืองชุมพร",
+                "distance": 480
+            },
+            {
+                "name": "หลังสวน",
+                "distance": 490
+            },
+            {
+                "name": "ปะทิว",
+                "distance": 500
+            },
+            {
+                "name": "สวี",
+                "distance": 510
+            },
+            {
+                "name": "ท่าแซะ",
+                "distance": 520
+            },
+            {
+                "name": "ละแม",
+                "distance": 530
+            },
+            {
+                "name": "ทุ่งตะโก",
+                "distance": 540
+            },
+            {
+                "name": "บางสน",
+                "distance": 550
+            },
+            {
+                "name": "ทุ่งคา",
+                "distance": 560
+            },
+            {
+                "name": "ปากคลอง",
+                "distance": 570
+            }
+        ]
+    },
+    {
+        "id": 71,
+        "province": "สงขลา",
+        "districts": [
+            {
+                "name": "เมืองสงขลา",
+                "distance": 850
+            },
+            {
+                "name": "หาดใหญ่",
+                "distance": 860
+            },
+            {
+                "name": "จะนะ",
+                "distance": 870
+            },
+            {
+                "name": "เทพา",
+                "distance": 880
+            },
+            {
+                "name": "ระโนด",
+                "distance": 890
+            },
+            {
+                "name": "กระแสสินธุ์",
+                "distance": 900
+            },
+            {
+                "name": "นาทวี",
+                "distance": 910
+            },
+            {
+                "name": "สะบ้าย้อย",
+                "distance": 920
+            },
+            {
+                "name": "คลองหอยโข่ง",
+                "distance": 930
+            },
+            {
+                "name": "สทิงพระ",
+                "distance": 940
+            }
+        ]
+    },
+    {
+        "id": 72,
+        "province": "สตูล",
+        "districts": [
+            {
+                "name": "เมืองสตูล",
+                "distance": 950
+            },
+            {
+                "name": "ควนโดน",
+                "distance": 960
+            },
+            {
+                "name": "ควนกาหลง",
+                "distance": 970
+            },
+            {
+                "name": "ทุ่งหว้า",
+                "distance": 980
+            },
+            {
+                "name": "ละงู",
+                "distance": 990
+            },
+            {
+                "name": "มะนัง",
+                "distance": 1000
+            },
+            {
+                "name": "กำแพง",
+                "distance": 1010
+            },
+            {
+                "name": "บ้านน้ำผุด",
+                "distance": 1020
+            },
+            {
+                "name": "ท่าเรือ",
+                "distance": 1030
+            },
+            {
+                "name": "ปากน้ำ",
+                "distance": 1040
+            }
+        ]
+    },
+    {
+        "id": 73,
+        "province": "ตรัง",
+        "districts": [
+            {
+                "name": "เมืองตรัง",
+                "distance": 800
+            },
+            {
+                "name": "กันตัง",
+                "distance": 810
+            },
+            {
+                "name": "ย่านตาขาว",
+                "distance": 820
+            },
+            {
+                "name": "ปะเหลียน",
+                "distance": 830
+            },
+            {
+                "name": "ห้วยยอด",
+                "distance": 840
+            },
+            {
+                "name": "วังวิเศษ",
+                "distance": 850
+            },
+            {
+                "name": "นาโยง",
+                "distance": 860
+            },
+            {
+                "name": "รัษฎา",
+                "distance": 870
+            },
+            {
+                "name": "บางรัก",
+                "distance": 880
+            },
+            {
+                "name": "คลองเต็ง",
+                "distance": 890
+            }
+        ]
+    },
+    {
+        "id": 74,
+        "province": "พัทลุง",
+        "districts": [
+            {
+                "name": "เมืองพัทลุง",
+                "distance": 750
+            },
+            {
+                "name": "ควนขนุน",
+                "distance": 760
+            },
+            {
+                "name": "บางแก้ว",
+                "distance": 770
+            },
+            {
+                "name": "เขาชัยสน",
+                "distance": 780
+            },
+            {
+                "name": "ปากพะยูน",
+                "distance": 790
+            },
+            {
+                "name": "ศรีนครินทร์",
+                "distance": 800
+            },
+            {
+                "name": "ป่าพะยอม",
+                "distance": 810
+            },
+            {
+                "name": "ตะโหมด",
+                "distance": 820
+            },
+            {
+                "name": "ควนมะพร้าว",
+                "distance": 830
+            },
+            {
+                "name": "หนองจิก",
+                "distance": 840
+            }
+        ]
+    },
+    {
+        "id": 75,
+        "province": "ปัตตานี",
+        "districts": [
+            {
+                "name": "เมืองปัตตานี",
+                "distance": 900
+            },
+            {
+                "name": "โคกโพธิ์",
+                "distance": 910
+            },
+            {
+                "name": "หนองจิก",
+                "distance": 920
+            },
+            {
+                "name": "ปะนาเระ",
+                "distance": 930
+            },
+            {
+                "name": "มายอ",
+                "distance": 940
+            },
+            {
+                "name": "ทุ่งยางแดง",
+                "distance": 950
+            },
+            {
+                "name": "สายบุรี",
+                "distance": 960
+            },
+            {
+                "name": "ไม้แก่น",
+                "distance": 970
+            },
+            {
+                "name": "ยะหริ่ง",
+                "distance": 980
+            },
+            {
+                "name": "ยะรัง",
+                "distance": 990
+            }
+        ]
+    },
+    {
+        "id": 76,
+        "province": "ยะลา",
+        "districts": [
+            {
+                "name": "เมืองยะลา",
+                "distance": 950
+            },
+            {
+                "name": "กรงปีนัง",
+                "distance": 960
+            },
+            {
+                "name": "เบตง",
+                "distance": 970
+            },
+            {
+                "name": "บันนังสตา",
+                "distance": 980
+            },
+            {
+                "name": "ธารโต",
+                "distance": 990
+            },
+            {
+                "name": "ยะหา",
+                "distance": 1000
+            },
+            {
+                "name": "กาบัง",
+                "distance": 1010
+            },
+            {
+                "name": "ลำใหม่",
+                "distance": 1020
+            },
+            {
+                "name": "ตาเนาะปูเต๊ะ",
+                "distance": 1030
+            },
+            {
+                "name": "แม่หวาด",
+                "distance": 1040
+            }
+        ]
+    },
+    {
+        "id": 77,
+        "province": "นราธิวาส",
+        "districts": [
+            {
+                "name": "เมืองนราธิวาส",
+                "distance": 1000
+            },
+            {
+                "name": "สุไหงโก-ลก",
+                "distance": 1010
+            },
+            {
+                "name": "สุไหงปาดี",
+                "distance": 1020
+            },
+            {
+                "name": "รือเสาะ",
+                "distance": 1030
+            },
+            {
+                "name": "แว้ง",
+                "distance": 1040
+            },
+            {
+                "name": "ระแงะ",
+                "distance": 1050
+            },
+            {
+                "name": "ศรีสาคร",
+                "distance": 1060
+            },
+            {
+                "name": "บาเจาะ",
+                "distance": 1070
+            },
+            {
+                "name": "เจาะไอร้อง",
+                "distance": 1080
+            },
+            {
+                "name": "ตากใบ",
+                "distance": 1090
+            }
+        ]
+    }
+]

@@ -115,3 +115,21 @@ footer p {
   margin-bottom: 0;
   /* จัดการระยะห่าง */
 }
+
+body.light-mode {
+  background-color: #f8f9fa;
+  color: #212529;
+}
+
+body.dark-mode {
+  background-color: #121212;
+  color: #ffffff;
+}
+
+.navbar-light {
+  background-color: #ffffff !important;
+}
+
+.navbar-dark {
+  background-color: #333333 !important;
+}

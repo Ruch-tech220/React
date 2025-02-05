@@ -1,0 +1,134 @@
+/* ---------- Theme Styles ---------- */
+.login-page.light-mode {
+  background-color: #ffffff;
+  color: #212529;
+}
+
+.login-page.dark-mode {
+  background-color: #2d2d2d;
+  color: #f8f9fa;
+}
+
+/* ปรับความสูงและการจัดเรียงของหน้า Login ทั้งหน้า */
+.login-page {
+  display: flex;
+  flex-direction: column;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  min-height: 100vh;           /* ให้สูงอย่างน้อยเต็ม viewport */
+
+}
+
+/* ส่วน Header (Hero Section) */
+.header-section {
+  position: relative;          /* หากต้องการวาง overlay-text แบบ absolute ก็ได้ */
+  background-repeat: no-repeat;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  height: 40vh;                /* ปรับตามต้องการ */
+}
+
+/* ข้อความทับซ้อนใน Header */
+.overlay-text {
+  background-color: rgba(0, 0, 0, 0.5);  /* ใส่พื้นหลังใส ๆ เพื่อให้ข้อความอ่านง่ายขึ้น */
+  border-radius: 8px;                   /* มุมโค้งมนเล็กน้อย */
+  z-index: 2; /* ทำให้ข้อความอยู่เหนือ overlay */
+
+}
+
+/* Overlay เพื่อความสบายตาและช่วยให้ข้อความอ่านง่าย */
+.login-header-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 1;
+}
+
+/* การ์ดล็อกอิน (Login Card) */
+.login-card {
+  border-radius: 8px;
+  border: none;               /* เอาขอบออกถ้าไม่ต้องการ */
+}
+
+/* ---------- Login Container ---------- */
+.login-container {
+  max-width: 400px;
+  border-radius: 8px;
+}
+
+.dark-mode .login-container .card-body {
+  background-color: #3a3a3a;
+  color: #f8f9fa;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+/* เพิ่มเอฟเฟกต์เล็ก ๆ เมื่อ hover ปุ่ม */
+.login-card .btn-primary:hover {
+  transform: translateY(-2px);
+  transition: transform 0.2s ease;
+}
+
+/* ถ้าต้องการให้ container ของเนื้อหา login มี max-width (เพื่อให้อยู่กลางหน้าจอ) */
+.login-container {
+  max-width: 400px;          /* ปรับขนาดได้ตามต้องการ */
+  margin: 0 auto;            /* จัดกึ่งกลาง */
+}
+
+/* ตกแต่ง label และ input ให้ดูเป็นระเบียบ */
+.form-label {
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+.form-control {
+  border-radius: 6px;
+}
+
+/* ---------- Buttons ---------- */
+.btn-primary {
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+  transform: scale(1.03);
+  background-color: #0d6efdcc; /* ไล่สีเล็กน้อยเมื่อ hover */
+}
+
+/* ---------- Form Labels ---------- */
+.form-label {
+  transition: color 0.3s ease;
+}
+
+/* ---------- Transition for all child elements ---------- */
+.login-page * {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* เพิ่ม margin ให้ส่วนต่าง ๆ */
+.my-5 {
+  margin-top: 3rem !important;
+  margin-bottom: 3rem !important;
+}
+
+.mt-4 {
+  margin-top: 1.5rem !important;
+}
+
+.mb-4 {
+  margin-bottom: 1.5rem !important;
+}
+
+.mb-3 {
+  margin-bottom: 1rem !important;
+}
+
+.mb-2 {
+  margin-bottom: 0.5rem !important;
+}
+
+.mx-auto {
+  margin-left: auto !important;
+  margin-right: auto !important;
+}

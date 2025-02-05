@@ -1,0 +1,72 @@
+/* ตัวอย่าง CSS สำหรับจัดการ Light/Dark Mode ทั่วไป */
+.admin-dashboard.light-mode {
+  background-color: #ffffff;
+  color: #212529;
+}
+
+.admin-dashboard.dark-mode {
+  background-color: #2d2d2d;
+  color: #f8f9fa;
+}
+
+.admin-dashboard {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 250px;
+  height: 100vh;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar .nav-link.active {
+  background-color: #495057;
+  border-radius: 4px;
+}
+
+.dark-mode .sidebar {
+  background-color: #343a40; /* ปรับสีเล็กน้อยในโหมดมืด */
+}
+
+/* Main Content */
+.main-content {
+  overflow-y: auto; /* กรณีข้อมูลยาว จะมี scroll ด้านใน */
+}
+
+/* ตาราง */
+.table thead th {
+  white-space: nowrap;
+}
+
+/* ปรับเอฟเฟกต์ปุ่มในตารางเล็กน้อย */
+.btn-sm.btn-danger {
+  transition: transform 0.2s ease;
+}
+
+.btn-sm.btn-danger:hover {
+  transform: scale(1.05);
+}
+
+/* Modal */
+.modal-content {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.dark-mode .modal-content {
+  background-color: #3a3a3a;
+  color: #f8f9fa;
+}
+
+/* Spinner in dark mode */
+.dark-mode .spinner-border.text-primary {
+  border-color: #0d6efd;
+  border-right-color: transparent;
+}
+
+/* Transition กับทุก element */
+.admin-dashboard * {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}

@@ -1,0 +1,55 @@
+/* ---------- Theme Styles ---------- */
+.profile-page.light-mode {
+  background-color: #f8f9fa;
+  color: #212529;
+}
+
+.profile-page.dark-mode {
+  background-color: #2d2d2d;
+  color: #ffffff;
+
+}
+
+/* ให้การเปลี่ยนโทนสีสลับโหมดเป็นไปอย่างลื่นไหล */
+.profile-page {
+  transition: background-color 0.3s ease, color 0.3s ease;
+  min-height: 100vh;           /* ให้สูงอย่างน้อยเต็ม viewport */
+
+}
+
+/* ---------- Profile Card ---------- */
+.profile-card {
+  max-width: 700px;
+  background-color: #ffffff;
+  
+}
+
+.dark-mode .profile-card {
+  background-color: #3a3a3a;
+  color: #f8f9fa;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* เพิ่มเติมสำหรับฟอร์มหรือส่วนอื่น ๆ ภายใน */
+.edit-form .form-control {
+  transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+.info-list p {
+  margin-bottom: 0.5rem;
+}
+
+/* ---------- Button Hover Effect ---------- */
+.btn {
+  transition: transform 0.3s ease;
+}
+
+.btn:hover {
+  transform: scale(1.03);
+  opacity: 0.95;
+}
+
+/* เพื่อให้ทุก element มี transition เวลาเปลี่ยนโหมด */
+.profile-page * {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}

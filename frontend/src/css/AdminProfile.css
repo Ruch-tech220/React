@@ -1,0 +1,42 @@
+/* ปรับโหมดแสง/มืดของคอมโพเนนต์ AdminProfile */
+.admin-profile.light-mode {
+    background-color: #ffffff;
+    color: #212529;
+  }
+  
+  .admin-profile.dark-mode {
+    background-color: #2d2d2d;
+    color: #f8f9fa;
+  }
+  
+  /* เพิ่ม transition เพื่อให้เปลี่ยนสีได้ลื่นไหล */
+  .admin-profile {
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  
+  /* Card ตรงกลาง */
+  .profile-card {
+    max-width: 600px;
+    margin-top: 2rem;
+    border-radius: 8px;
+  }
+  
+  /* ปรับสี list-group ในโหมดมืด */
+  .dark-mode .list-group-item {
+    background-color: #3a3a3a;
+    color: #f8f9fa;
+    border-color: #4a4a4a;
+  }
+  
+  /* เพิ่ม transition ให้ทุกองค์ประกอบภายในด้วย */
+  .admin-profile * {
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  
+  /* ปุ่ม hover effect */
+  .btn-primary:hover,
+  .btn-success:hover,
+  .btn-secondary:hover {
+    opacity: 0.9;
+  }
+  

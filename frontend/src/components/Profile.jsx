@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react";
 import axios from "axios";
 import "../css/Profile.css";
-import { ThemeContext } from "./ThemeProvider"; // ใช้ ThemeContext
+import { ThemeContext } from "./ThemeProvider";
 
 const Profile = () => {
   const { isDarkMode } = useContext(ThemeContext);
@@ -18,9 +18,9 @@ const Profile = () => {
     try {
       const res = await axios.put("http://localhost:5000/user/update", formData);
       alert("ข้อมูลได้รับการอัปเดตสำเร็จ!");
-      localStorage.setItem("user", JSON.stringify(formData)); // อัปเดต Local Storage
-      setUser(formData); // อัปเดต State
-      setIsEditing(false); // ปิดโหมดแก้ไข
+      localStorage.setItem("user", JSON.stringify(formData));
+      setUser(formData);
+      setIsEditing(false);
     } catch (error) {
       console.error(error);
       alert("ไม่สามารถอัปเดตข้อมูลได้ กรุณาลองใหม่");
@@ -28,135 +28,159 @@ const Profile = () => {
   };
 
   return (
-    <div
-      className={`profile-page container-fluid py-5 ${
-        isDarkMode ? "dark-mode" : "light-mode"
-      }`}
-    >
+    <div className={`profile-page container-fluid py-5 ${isDarkMode ? "bg-dark text-light" : "bg-light"}`}>
       <div className="container">
-        <div className="profile-card mx-auto p-4 rounded shadow">
-          <h2 className="text-center mb-4">
-            <i className="bi bi-person-circle me-2"></i>ข้อมูลผู้ใช้งาน
-          </h2>
+        <div className={`profile-card mx-auto p-4 rounded-4 shadow-lg ${isDarkMode ? "bg-dark-gray" : "bg-white"}`}>
+          <div className="text-center mb-4">
+            <div className="avatar-wrapper mx-auto mb-3 ">
+              <i className="bi bi-person-circle display-3 text-info"></i>
+            </div>
+            <h2 className="h3 fw-bold mb-0">ข้อมูลผู้ใช้งาน</h2>
+            <div className="">ID: {user.Cus_ID}</div>
+          </div>
+
           {isEditing ? (
             <form onSubmit={handleSubmit} className="edit-form">
-              <div className="row mb-3">
+              <div className="row g-4 mb-4">
                 <div className="col-md-6">
-                  <label className="form-label">ชื่อ</label>
-                  <input
-                    type="text"
-                    name="Cus_Name"
-                    value={formData.Cus_Name}
-                    onChange={handleChange}
-                    className="form-control"
-                    required
-                  />
+                  <div className="form-floating">
+                    <input
+                      type="text"
+                      name="Cus_Name"
+                      value={formData.Cus_Name}
+                      onChange={handleChange}
+                      className="form-control form-control-lg"
+                      placeholder="ชื่อ"
+                      required
+                    />
+                    <label>ชื่อ</label>
+                  </div>
                 </div>
                 <div className="col-md-6">
-                  <label className="form-label">นามสกุล</label>
-                  <input
-                    type="text"
-                    name="Cus_Lname"
-                    value={formData.Cus_Lname}
-                    onChange={handleChange}
-                    className="form-control"
-                    required
-                  />
+                  <div className="form-floating">
+                    <input
+                      type="text"
+                      name="Cus_Lname"
+                      value={formData.Cus_Lname}
+                      onChange={handleChange}
+                      className="form-control form-control-lg"
+                      placeholder="นามสกุล"
+                      required
+                    />
+                    <label>นามสกุล</label>
+                  </div>
+                </div>
+
+                <div className="col-md-6">
+                  <div className="form-floating">
+                    <input
+                      type="text"
+                      name="Username"
+                      value={formData.Username}
+                      onChange={handleChange}
+                      className="form-control form-control-lg"
+                      placeholder="ชื่อผู้ใช้"
+                      required
+                    />
+                    <label>ชื่อผู้ใช้</label>
+                  </div>
+                </div>
+
+                <div className="col-md-6">
+                  <div className="form-floating">
+                    <input
+                      type="tel"
+                      name="Cus_Phone"
+                      value={formData.Cus_Phone}
+                      onChange={handleChange}
+                      className="form-control form-control-lg"
+                      placeholder="เบอร์โทร"
+                      required
+                    />
+                    <label>เบอร์โทร</label>
+                  </div>
+                </div>
+
+                <div className="col-12">
+                  <div className="form-floating">
+                    <input
+                      type="email"
+                      name="Cus_Email"
+                      value={formData.Cus_Email}
+                      onChange={handleChange}
+                      className="form-control form-control-lg"
+                      placeholder="อีเมล"
+                      required
+                    />
+                    <label>อีเมล</label>
+                  </div>
                 </div>
               </div>
-              <div className="row mb-3">
-                <div className="col-md-6">
-                  <label className="form-label">ชื่อผู้ใช้</label>
-                  <input
-                    type="text"
-                    name="Username"
-                    value={formData.Username}
-                    onChange={handleChange}
-                    className="form-control"
-                    required
-                  />
-                </div>
-                <div className="col-md-6">
-                  <label className="form-label">รหัสผ่าน</label>
-                  <input
-                    type="password"
-                    name="Password"
-                    value={formData.Password}
-                    onChange={handleChange}
-                    className="form-control"
-                    required
-                  />
-                </div>
-              </div>
-              <div className="row mb-3">
-                <div className="col-md-6">
-                  <label className="form-label">เบอร์โทร</label>
-                  <input
-                    type="text"
-                    name="Cus_Phone"
-                    value={formData.Cus_Phone}
-                    onChange={handleChange}
-                    className="form-control"
-                    required
-                  />
-                </div>
-                <div className="col-md-6">
-                  <label className="form-label">อีเมล</label>
-                  <input
-                    type="email"
-                    name="Cus_Email"
-                    value={formData.Cus_Email}
-                    onChange={handleChange}
-                    className="form-control"
-                    required
-                  />
-                </div>
-              </div>
-              <div className="text-center">
-                <button type="submit" className="btn btn-success me-2">
-                  <i className="bi bi-check2-circle me-1"></i>บันทึก
+
+              <div className="d-flex gap-2 justify-content-center">
+                <button
+                  type="submit"
+                  className="btn btn-success btn-lg px-5 py-3 fw-bold"
+                >
+                  <i className="bi bi-check2-circle me-2"></i>บันทึกการเปลี่ยนแปลง
                 </button>
                 <button
                   type="button"
                   onClick={() => setIsEditing(false)}
-                  className="btn btn-secondary"
+                  className="btn btn-outline-secondary btn-lg px-5 py-3"
                 >
-                  <i className="bi bi-x-circle me-1"></i>ยกเลิก
+                  <i className="bi bi-x-circle me-2"></i>ยกเลิก
                 </button>
               </div>
             </form>
           ) : (
-            <div className="info-list">
-              <div className="row mb-3">
+            <div className="user-info">
+              <div className="row g-4 mb-4">
                 <div className="col-md-6">
-                  <p>
-                    <strong>ID:</strong> {user.Cus_ID}
-                  </p>
-                  <p>
-                    <strong>ชื่อ:</strong> {user.Cus_Name} {user.Cus_Lname}
-                  </p>
+                  <div className="info-item p-3 rounded-3 bg-light-hover">
+                    <div className=" small mb-1">ชื่อ-สกุล</div>
+                    <div className="h5 fw-bold">
+                      {user.Cus_Name} {user.Cus_Lname}
+                    </div>
+                  </div>
                 </div>
+
                 <div className="col-md-6">
-                  <p>
-                    <strong>ชื่อผู้ใช้:</strong> {user.Username}
-                  </p>
-                  <p>
-                    <strong>รหัสผ่าน:</strong> {user.Password}
-                  </p>
+                  <div className="info-item p-3 rounded-3 bg-light-hover">
+                    <div className=" small mb-1">ชื่อผู้ใช้</div>
+                    <div className="h5 fw-bold">{user.Username}</div>
+                  </div>
+                </div>
+
+                <div className="col-md-6">
+                  <div className="info-item p-3 rounded-3 bg-light-hover">
+                    <div className=" small mb-1">เบอร์โทรศัพท์</div>
+                    <div className="h5 fw-bold">
+                      <a href={`tel:${user.Cus_Phone}`} className="text-decoration-none">
+                        {user.Cus_Phone}
+                      </a>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="col-md-6">
+                  <div className="info-item p-3 rounded-3 bg-light-hover">
+                    <div className=" small mb-1">อีเมล</div>
+                    <div className="h5 fw-bold">
+                      <a href={`mailto:${user.Cus_Email}`} className="text-decoration-none">
+                        {user.Cus_Email}
+                      </a>
+                    </div>
+                  </div>
                 </div>
               </div>
-              <p>
-                <strong>เบอร์โทร:</strong> {user.Cus_Phone}
-              </p>
-              <p>
-                <strong>อีเมล:</strong> {user.Cus_Email}
-              </p>
-              <div className="text-center mt-3">
+
+              <div className="text-center">
                 <button
                   onClick={() => setIsEditing(true)}
-                  className="btn btn-primary"
+                  className="btn btn-success btn-lg px-5 py-3 fw-bold"
                 >
-                  <i className="bi bi-pencil-square me-1"></i>แก้ไขข้อมูล
+                  <i className="bi bi-pencil-square me-2"></i>แก้ไขข้อมูลส่วนตัว
                 </button>
               </div>
             </div>

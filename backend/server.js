@@ -19,36 +19,51 @@ const validateBody = (requiredFields) => (req, res, next) => {
     next();
 };
 
+// ฟังก์ชันตรวจสอบข้อมูลซ้ำ
+const checkExistingUser = (email, username, phone, callback) => {
+    const query = `
+      SELECT * FROM tb_customer
+      WHERE Cus_Email = ? OR Username = ? OR Cus_Phone = ?
+    `;
+    db.query(query, [email, username, phone], (err, results) => {
+        if (err) {
+            callback(err, null);
+        } else {
+            callback(null, results);
+        }
+    });
+};
+
 const handleStatusChange = async (orderId, newStatus) => {
     console.log("Updating status for Order ID:", orderId, "to", newStatus);
-  
-    try {
-      const response = await fetch("http://localhost:5000/api/updateOrderStatus", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ orderId, newStatus }),
-      });
-  
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-  
-      const data = await response.json();
-      console.log("Server Response:", data);
-  
-      setOrders((prevOrders) =>
-        prevOrders.map((order) =>
-          order.Order_ID === orderId ? { ...order, status: newStatus } : order
-        )
-      );
-    } catch (error) {
-      console.error("Error updating status:", error);
-    }
-  };
 
-  
+    try {
+        const response = await fetch("http://localhost:5000/api/updateOrderStatus", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ orderId, newStatus }),
+        });
+
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        const data = await response.json();
+        console.log("Server Response:", data);
+
+        setOrders((prevOrders) =>
+            prevOrders.map((order) =>
+                order.Order_ID === orderId ? { ...order, status: newStatus } : order
+            )
+        );
+    } catch (error) {
+        console.error("Error updating status:", error);
+    }
+};
+
+
 
 // Login API
 app.post("/login", (req, res) => {
@@ -132,28 +147,70 @@ app.post("/register", (req, res) => {
 
     // ตรวจสอบว่าข้อมูลครบถ้วน
     if (!Cus_Name || !Cus_Lname || !Username || !Password || !Cus_Phone || !Cus_Email) {
-        return res.status(400).send({ message: "All fields are required" });
+        return res.status(400).send({ message: "ต้องระบุข้อมูลทุกช่อง" });
     }
 
-    const sql = `
-      INSERT INTO tb_customer (Cus_Name, Cus_Lname, Username, Password, Cus_Phone, Cus_Email)
-      VALUES (?, ?, ?, ?, ?, ?)
-    `;
-    const params = [Cus_Name, Cus_Lname, Username, Password, Cus_Phone, Cus_Email]; // เก็บ Password ดิบ
+    // ตรวจสอบรูปแบบเบอร์โทรศัพท์ (ต้องเป็นตัวเลขเท่านั้น)
+    const phoneRegex = /^[0-9]+$/;
+    if (!phoneRegex.test(Cus_Phone)) {
+        return res.status(400).send({ message: "หมายเลขโทรศัพท์ต้องมีเฉพาะตัวเลขเท่านั้น" });
+    }
 
-    db.query(sql, params, (err, result) => {
+    // ตรวจสอบรูปแบบรหัสผ่าน (ภาษาอังกฤษ, ตัวเลข, เครื่องหมายเท่านั้น)
+    const passwordRegex = /^[A-Za-z0-9!@#$%^&*()_+]*$/;
+    if (!passwordRegex.test(Password)) {
+        return res.status(400).send({ message: "รหัสผ่านต้องมีเฉพาะตัวอักษรภาษาอังกฤษ ตัวเลข หรือสัญลักษณ์เท่านั้น" });
+    }
+
+
+    // ตรวจสอบข้อมูลที่ซ้ำในฐานข้อมูล
+    checkExistingUser(Cus_Email, Username, Cus_Phone, (err, results) => {
         if (err) {
-            console.error("Error inserting data:", err);
-            if (err.code === "ER_DUP_ENTRY") {
-                return res.status(400).send({ message: "Username already exists" });
-            }
-            return res.status(500).send({ message: "Database error" });
+            return res.status(500).json({ message: "เกิดข้อผิดพลาดในการตรวจสอบข้อมูล" });
         }
 
-        // สมัครสำเร็จ ส่งข้อความตอบกลับ
-        res.status(201).send({
-            message: "User registered successfully",
-            user: { Username, Password }, // ส่ง Username และ Password กลับไป
+        let errors = {};
+
+        if (results.length > 0) {
+            // สร้าง object เพื่อเก็บข้อผิดพลาดทั้งหมด
+            const errors = {};
+
+            // ตรวจสอบข้อมูลทีละฟิลด์
+            if (results.some(user => user.Cus_Email === Cus_Email)) {
+                errors.email = "อีเมลนี้ถูกใช้งานแล้ว";
+            }
+            if (results.some(user => user.Username === Username)) {
+                errors.username = "ชื่อผู้ใช้นี้มีอยู่แล้ว";
+            }
+            if (results.some(user => user.Cus_Phone === Cus_Phone)) {
+                errors.phone = "เบอร์โทรศัพท์นี้ถูกใช้งานแล้ว";
+            }
+
+            // ถ้ามีข้อผิดพลาดใดๆ ส่งกลับทั้งหมดพร้อมกัน
+            if (Object.keys(errors).length > 0) {
+                return res.status(400).json({ errors });
+            }
+        }
+
+
+        // ถ้าทุกอย่างโอเค ให้ทำการบันทึกข้อมูลลงฐานข้อมูล
+        const sql = `
+        INSERT INTO tb_customer (Cus_Name, Cus_Lname, Username, Password, Cus_Phone, Cus_Email)
+        VALUES (?, ?, ?, ?, ?, ?)
+      `;
+        const params = [Cus_Name, Cus_Lname, Username, Password, Cus_Phone, Cus_Email]; // เก็บ Password ดิบ
+
+        db.query(sql, params, (err, result) => {
+            if (err) {
+                console.error("Error inserting data:", err);
+                return res.status(500).send({ message: "Database error" });
+            }
+
+            // สมัครสำเร็จ ส่งข้อความตอบกลับ
+            res.status(201).send({
+                message: "User registered successfully",
+                user: { Username }, // ส่ง Username กลับไป
+            });
         });
     });
 });
@@ -248,10 +305,6 @@ app.post("/api/updateOrderStatus", (req, res) => {
         res.status(200).json({ message: "Order status updated successfully", orderId, newStatus });
     });
 });
-
-
-
-
 
 //ปรับRole
 app.put("/users/promote", (req, res) => {
@@ -378,8 +431,8 @@ app.post("/order/create", (req, res) => {
             // หากไม่มีคำสั่งซื้อซ้ำ ให้บันทึกข้อมูลใหม่
             const insertSQL = `
               INSERT INTO tb_order 
-              (Cus_ID, Cus_Name, Cus_Lname, Cus_Phone, Cus_Email, Location_From, Location_To, Distance, Total_Cost) 
-              VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+              (Cus_ID, Cus_Name, Cus_Lname, Cus_Phone, Cus_Email, Location_From, Location_To, Distance, Total_Cost, \`status\`) 
+              VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
             `;
             const params = [
                 Cus_ID,
@@ -391,6 +444,8 @@ app.post("/order/create", (req, res) => {
                 Location_To,
                 Distance,
                 Total_Cost,
+                "รอชำระ", // ✅ ใส่ค่า status ที่ต้องการ
+
             ];
 
             db.query(insertSQL, params, (err, result) => {
@@ -410,6 +465,7 @@ app.post("/order/create", (req, res) => {
 
 
 app.post("/orders", (req, res) => {
+    console.log("Received data:", req.body); // เช็คค่าที่ได้รับจาก frontend
     const {
         Cus_ID,
         Cus_Name,
@@ -440,7 +496,7 @@ app.post("/orders", (req, res) => {
 
     const sql = `
       INSERT INTO tb_order
-      (Cus_ID, Cus_Name, Cus_Lname, Cus_Phone, Cus_Email, Location_From, Location_To, Distance, Total_Cost, status)
+  (Cus_ID, Cus_Name, Cus_Lname, Cus_Phone, Cus_Email, Location_From, Location_To, Distance, Total_Cost, \`status\`)
       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
     `;
     const params = [
@@ -453,7 +509,7 @@ app.post("/orders", (req, res) => {
         Location_To,
         Distance,
         Cost,
-        status, // เพิ่ม status เข้าไปใน params
+        status // เพิ่ม status เข้าไปใน params
     ];
 
     db.query(sql, params, (err, result) => {
@@ -470,7 +526,7 @@ app.get("/orders", (req, res) => {
     const { Cus_ID } = req.query;
 
     let sql = `
-    SELECT Order_ID, Cus_ID, Cus_Name, Cus_Lname, Cus_Email, Cus_Phone, Location_From, Location_To, Distance, Total_Cost, Order_Date, status
+    SELECT Order_ID, Cus_ID, Cus_Name, Cus_Lname, Cus_Phone, Cus_Email, Location_From, Location_To, Distance, Total_Cost, Order_Date, status
     FROM tb_order
   `;
     const params = [];
@@ -538,19 +594,21 @@ app.get("/stats", (req, res) => {
     const query = `
       SELECT 
         (SELECT COUNT(*) FROM tb_customer) + (SELECT COUNT(*) FROM tb_employee) AS total_members,
-        (SELECT COUNT(*) FROM tb_order) AS total_orders
+        (SELECT COUNT(*) FROM tb_order) AS total_orders,
+        (SELECT COUNT(*) FROM tb_order WHERE status = 'เสร็จสิ้น') AS total_completed_orders,
+        (SELECT COUNT(*) FROM tb_order WHERE status IN ('รอชำระ', 'กำลังดำเนินการ')) AS total_pending_orders
     `;
-  
+
     db.query(query, (err, results) => {
-      if (err) {
-        console.error("Error fetching stats:", err);
-        return res.status(500).json({ error: "Database error" });
-      }
-      res.json(results[0]); // ส่งข้อมูลออกไป
+        if (err) {
+            console.error("Error fetching stats:", err);
+            return res.status(500).json({ error: "Database error" });
+        }
+        res.json(results[0]); // ส่งข้อมูลออกไป
     });
-  });
-  
-  
+});
+
+
 // Start Server
 const PORT = 5000;
 app.listen(PORT, () => {

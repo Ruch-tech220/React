@@ -3,9 +3,11 @@ import axios from "axios";
 import { ThemeContext } from "./ThemeProvider"; // import สำหรับ Dark/Light Mode
 import "../css/Register.css"; // import ไฟล์ CSS
 import Pic2 from "../assets/images/banner1.WEBP"; // รูปพื้นหลัง Header (เหมือน login เพื่อให้ดีไซน์สอดคล้อง)
+import { useNavigate } from "react-router-dom"; // import useNavigate
 
 // ตัวอย่างโค้ด Register
 const Register = () => {
+  const navigate = useNavigate(); // สร้างตัวแปร navigate
   const { isDarkMode } = useContext(ThemeContext);
 
   // State สำหรับฟอร์ม, error, และสถานะ loading
@@ -22,8 +24,36 @@ const Register = () => {
 
   // ฟังก์ชันจัดการ Input
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+
+    if (name === "Cus_Phone") {
+      // ลบทุกตัวอักษรที่ไม่ใช่ตัวเลข
+      let newValue = value.replace(/\D/g, "");
+
+      // จำกัดความยาวไม่เกิน 10 ตัว
+      if (newValue.length > 10) {
+        newValue = newValue.slice(0, 10);
+        setErrors({ ...errors, Cus_Phone: "เบอร์โทรต้องไม่เกิน 10 ตัวเลข" });
+      } else {
+        setErrors({ ...errors, Cus_Phone: "" });
+      }
+
+      // อัพเดทค่าใน state
+      setFormData({ ...formData, [name]: newValue });
+
+      // ตรวจสอบความยาวและแสดงข้อความเตือน
+      if (newValue.length > 0 && newValue.length < 10) {
+        setErrors({ ...errors, Cus_Phone: `กรุณากรอกให้ครบ 10 หลัก (เหลืออีก ${10 - newValue.length} หลัก)` });
+      } else if (newValue.length === 10) {
+        setErrors({ ...errors, Cus_Phone: "" });
+      }
+      return;
+    }
+
+    setFormData({ ...formData, [name]: value });
+    setErrors({ ...errors, [name]: "" });
   };
+
 
   // ฟังก์ชัน Submit ฟอร์ม
   const handleSubmit = async (e) => {
@@ -39,12 +69,34 @@ const Register = () => {
     if (!formData.Cus_Phone) newErrors.Cus_Phone = "กรุณากรอกเบอร์โทร";
     if (!formData.Cus_Email) newErrors.Cus_Email = "กรุณากรอกอีเมล";
 
+    const phoneRegex = /^[0-9]+$/;
+    if (!phoneRegex.test(formData.Cus_Phone)) {
+      newErrors.Cus_Phone = "เบอร์โทรต้องเป็นตัวเลขเท่านั้น";
+    }
+
+    // ตรวจสอบความยาวของเบอร์โทร
+    if (formData.Cus_Phone.length !== 10) {
+      newErrors.Cus_Phone = "กรุณากรอกเบอร์โทรให้ครบ 10 หลัก";
+    }
+
+    // ตรวจสอบรหัสผ่านให้มีความยาวอย่างน้อย 6 ตัว
+    if (formData.Password.length < 6) {
+      newErrors.Password = "รหัสผ่านต้องมีความยาวอย่างน้อย 6 ตัว";
+    }
+
+    // ตรวจสอบรหัสผ่านให้เป็นภาษาอังกฤษ
+    const passwordRegex = /^[A-Za-z0-9!@#$%^&*()_+]*$/;
+    if (!passwordRegex.test(formData.Password)) {
+      newErrors.Password = "รหัสผ่านต้องเป็นภาษาอังกฤษเท่านั้น สามารถใส่ตัวเลขหรือเครื่องหมายได้";
+    }
+
     if (Object.keys(newErrors).length > 0) {
       setErrors(newErrors);
       setLoading(false);
       return;
     }
-    setErrors({}); // เคลียร์ errors หากไม่มี
+
+    setErrors({});
 
     try {
       // เรียกใช้งาน API ของคุณเพื่อสมัครสมาชิก
@@ -60,9 +112,27 @@ const Register = () => {
         Cus_Phone: "",
         Cus_Email: "",
       });
+      navigate("/login"); // เปลี่ยนเส้นทางไปยังหน้า login
+
     } catch (error) {
-      console.error("Error during registration:", error);
-      alert("เกิดข้อผิดพลาดในการสมัครสมาชิก กรุณาลองใหม่อีกครั้ง");
+      console.error("Registration error:", error.response?.data);
+
+      // รับข้อผิดพลาดจาก backend
+      if (error.response?.data?.errors) {
+        const serverErrors = error.response.data.errors;
+
+        // แปลงรูปแบบข้อผิดพลาดให้ตรงกับ state
+        const newErrors = {
+          Cus_Email: serverErrors.email,
+          Username: serverErrors.username,
+          Cus_Phone: serverErrors.phone
+        };
+
+        setErrors(newErrors);
+        return;
+      }
+
+      alert(error.response?.data?.error || "เกิดข้อผิดพลาดในการสมัครสมาชิก");
     } finally {
       setLoading(false);
     }
@@ -175,16 +245,24 @@ const Register = () => {
                 <div className="mb-3">
                   <label className="form-label fw-semibold">เบอร์โทร</label>
                   <input
-                    type="text"
+                    type="tel"
                     name="Cus_Phone"
-                    className={`form-control ${errors.Cus_Phone ? "is-invalid" : ""
-                      }`}
-                    placeholder="กรอกเบอร์โทร"
+                    className={`form-control ${errors.Cus_Phone ? "is-invalid" : ""}`}
+                    placeholder="กรอกเบอร์โทร "
                     value={formData.Cus_Phone}
                     onChange={handleChange}
+                    maxLength="10"
+                    inputMode="numeric"
                   />
                   {errors.Cus_Phone && (
-                    <div className="invalid-feedback">{errors.Cus_Phone}</div>
+                    <div className="invalid-feedback d-block">
+                      {errors.Cus_Phone}
+                      {formData.Cus_Phone.length === 10 && (
+                        <span className="text-success ms-2">
+                          <i className="bi bi-check-circle-fill"></i> หมายเลขถูกต้อง
+                        </span>
+                      )}
+                    </div>
                   )}
                 </div>
 
@@ -208,7 +286,7 @@ const Register = () => {
                 {/* ปุ่มสมัครสมาชิก */}
                 <button
                   type="submit"
-                  className="btn btn-success w-100"
+                  className="btn btn-info w-100"
                   disabled={loading}
                 >
                   {loading ? "กำลังลงทะเบียน..." : "สมัครสมาชิก"}

@@ -50,6 +50,7 @@ const OrderHistory = () => {
               <th>ระยะทาง (km)</th>
               <th>จำนวน (฿)</th>
               <th>วันที่</th>
+              <th>สถานะ</th>
             </tr>
           </thead>
           <tbody>
@@ -61,6 +62,7 @@ const OrderHistory = () => {
                 <td>{order.Distance}</td>
                 <td>{order.Total_Cost}</td>
                 <td>{new Date(order.Order_Date).toLocaleString()}</td>
+                <td>{order.status}</td>
               </tr>
             ))}
           </tbody>

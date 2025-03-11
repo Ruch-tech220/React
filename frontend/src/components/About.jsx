@@ -30,7 +30,7 @@ const About = () => {
           <div className="overlay-text text-center text-light p-5 position-relative">
             <h1 className="display-3 fw-bold">เกี่ยวกับเรา</h1>
             <p className="lead mt-3">
-              ระบบขนส่งสินค้าของเรา ออกแบบมาเพื่อความสะดวก รวดเร็ว และปลอดภัย
+              เก้าแสนทรานสปอร์ต ของเรา ออกแบบมาเพื่อความสะดวก รวดเร็ว และปลอดภัย
               มุ่งเน้นให้บริการลูกค้าทุกระดับอย่างมืออาชีพ
             </p>
           </div>
@@ -79,14 +79,14 @@ const About = () => {
               <i className="bi bi-envelope fs-4 text-primary me-2"></i>
               อีเมล:{" "}
               <a href="mailto:contact@logistics.com" className="contact-link">
-                contact@logistics.com
+                kaosantransport@kst.com
               </a>
             </p>
             <p>
               <i className="bi bi-telephone fs-4 text-success me-2"></i>
               เบอร์โทร:{" "}
               <a href="tel:+66812345678" className="contact-link">
-                081-234-5678
+                081-245-3523
               </a>
             </p>
           </div>

@@ -11,7 +11,20 @@ const AdminDashboard = () => {
   const [loading, setLoading] = useState(true);
   const [filteredOrders, setFilteredOrders] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
+  const [selectedOrder, setSelectedOrder] = useState(null);
   const [activeTab, setActiveTab] = useState("dashboard");
+  const modal = document.querySelector('#receiptModal');
+  const closeButton = modal?.querySelector('.btn-close');
+  const modalSelector = '#receiptModal'
+  const data = {
+    hasModal: !!modal,
+    hasCloseButton: !!closeButton,
+  };
+  if (closeButton) {
+    closeButton.click();
+  }
+  const isModalClosed = !document.querySelector(modalSelector);
+  data.isModalClosed = isModalClosed
   const [stats, setStats] = useState({
     total_members: 0,
     total_orders: 0,
@@ -89,6 +102,7 @@ const AdminDashboard = () => {
       alert("ตำแหน่งนี้ถูกตั้งค่าไว้แล้ว");
       return;
     }
+
     setLoadingChangeRole(true);
     try {
       const res = await axios.put("http://localhost:5000/users/promote", {
@@ -107,6 +121,7 @@ const AdminDashboard = () => {
 
   // ลบผู้ใช้งาน
   const handleDelete = async (id, role) => {
+
     try {
       const res = await axios.delete(`http://localhost:5000/users/${id}`, {
         params: { role },
@@ -126,6 +141,7 @@ const AdminDashboard = () => {
     const filtered = orders.filter((order) =>
       [
         order.Cus_ID?.toString(),
+        order.Order_ID,
         order.Cus_Name,
         order.Cus_Lname,
         order.Cus_Phone,
@@ -148,16 +164,6 @@ const AdminDashboard = () => {
   const handleCloseModal = () => {
     setShowModal(false);
   };
-
-  // ลบ backdrop ซ้ำซ้อนเมื่อ modal ปิด
-  useEffect(() => {
-    if (!showModal) {
-      document.querySelectorAll(".modal-backdrop").forEach((backdrop) => {
-        backdrop.remove();
-      });
-      document.body.classList.remove("modal-open");
-    }
-  }, [showModal]);
 
   // เพิ่มข้อมูลผู้ใช้ใหม่
   const handleAddUser = async (e) => {
@@ -262,22 +268,59 @@ const AdminDashboard = () => {
         {/* Main Content */}
         <main className="col-md-9 ms-sm-auto col-lg-10 px-md-4 py-4">
           {activeTab === "dashboard" && (
-            <div>
-              <h2 className="mb-4">สถิติระบบ</h2>
-              <div className="row">
-                <div className="col-md-6 mb-4">
-                  <div className="card text-white bg-success shadow">
-                    <div className="card-body">
-                      <h5 className="card-title">สมาชิกทั้งหมด</h5>
-                      <p className="card-text fs-4">{stats.total_members} คน</p>
+            <div className="container-fluid p-4 ">
+              <h2 className="mb-4 fw-bold border-bottom pb-2">
+                📊 สถิติระบบ
+              </h2>
+              <div className="row g-4">
+                {/* สมาชิกทั้งหมด */}
+                <div className="col-12 col-md-6 col-xl-3">
+                  <div className="card shadow-lg hover-shadow transform transition-all duration-300 h-100 bg-success bg-gradient">
+                    <div className="card-body d-flex flex-column">
+                      <div className="d-flex align-items-center mb-3">
+                        <i className="bi bi-people-fill fs-2 me-2"></i>
+                        <h5 className="card-title mb-0">สมาชิกทั้งหมด</h5>
+                      </div>
+                      <p className="card-text fs-1 fw-bold mt-auto">{stats.total_members} <span className="fs-4">คน</span></p>
                     </div>
                   </div>
                 </div>
-                <div className="col-md-6 mb-4">
-                  <div className="card text-white bg-info shadow">
-                    <div className="card-body">
-                      <h5 className="card-title">จำนวนออเดอร์ทั้งหมด</h5>
-                      <p className="card-text fs-4">{stats.total_orders} รายการ</p>
+
+                {/* ออเดอร์ทั้งหมด */}
+                <div className="col-12 col-md-6 col-xl-3">
+                  <div className="card shadow-lg hover-shadow transform transition-all duration-300 h-100 bg-info bg-gradient">
+                    <div className="card-body d-flex flex-column">
+                      <div className="d-flex align-items-center mb-3">
+                        <i className="bi bi-cart-check fs-2 me-2"></i>
+                        <h5 className="card-title mb-0">ออเดอร์ทั้งหมด</h5>
+                      </div>
+                      <p className="card-text fs-1 fw-bold mt-auto">{stats.total_orders} <span className="fs-4">รายการ</span></p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* ออเดอร์ค้าง処理 */}
+                <div className="col-12 col-md-6 col-xl-3">
+                  <div className="card shadow-lg hover-shadow transform transition-all duration-300 h-100 bg-warning bg-gradient">
+                    <div className="card-body d-flex flex-column">
+                      <div className="d-flex align-items-center mb-3">
+                        <i className="bi bi-clock-history fs-2 me-2"></i>
+                        <h5 className="card-title mb-0">ออเดอร์ที่ยังไม่เสร็จสิ้น</h5>
+                      </div>
+                      <p className="card-text fs-1 fw-bold mt-auto">{stats.total_pending_orders} <span className="fs-4">รายการ</span></p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* ออเดอร์เสร็จสิ้น */}
+                <div className="col-12 col-md-6 col-xl-3">
+                  <div className="card shadow-lg hover-shadow transform transition-all duration-300 h-100 bg-danger bg-gradient">
+                    <div className="card-body d-flex flex-column">
+                      <div className="d-flex align-items-center mb-3">
+                        <i className="bi bi-check-circle-fill fs-2 me-2"></i>
+                        <h5 className="card-title mb-0">ออเดอร์ที่เสร็จสิ้นแล้ว</h5>
+                      </div>
+                      <p className="card-text fs-1 fw-bold mt-auto">{stats.total_completed_orders} <span className="fs-4">รายการ</span></p>
                     </div>
                   </div>
                 </div>
@@ -286,11 +329,21 @@ const AdminDashboard = () => {
           )}
 
           {activeTab === "manage" && (
-            <div>
-              <h1 className="mb-4">จัดการสมาชิก</h1>
-              <button className="btn btn-primary mb-3" onClick={handleOpenModal}>
-                เพิ่มข้อมูลผู้ใช้ใหม่
-              </button>
+            <div className="container-fluid p-4">
+              {/* Header Section */}
+              <div className="d-flex justify-content-between align-items-center mb-4 border-bottom">
+                <h1 className="h2 fw-bold  ">
+                  <i className="fas fa-users-cog me-3"></i>
+                  จัดการสมาชิก
+                </h1>
+                <button
+                  className="btn btn-primary px-4 py-2"
+                  onClick={handleOpenModal}
+                >
+                  <i className="fas fa-user-plus me-2"></i>
+                  เพิ่มข้อมูลผู้ใช้ใหม่
+                </button>
+              </div>
 
               {/* Modal */}
               {showModal && (
@@ -399,57 +452,78 @@ const AdminDashboard = () => {
                 </>
               )}
 
-              {/* ตารางแสดงรายชื่อสมาชิก */}
-              <div className="card shadow-sm">
-                <div className="card-header">
-                  <h5 className="mb-0">รายชื่อสมาชิก</h5>
+              {/* Member Table */}
+              <div className="card border-0 shadow-lg">
+                <div className="card-header bg-secondary text-white py-3">
+                  <h5 className="mb-0">
+                    <i className="fas fa-list-ul me-2"></i>
+                    รายชื่อสมาชิก
+                  </h5>
                 </div>
-                <div className="card-body">
+
+                <div className="card-body p-0">
                   {loading ? (
-                    <div className="text-center my-4">
-                      <div className="spinner-border text-primary" role="status"></div>
-                      <p>กำลังโหลดข้อมูล...</p>
+                    <div className="text-center py-5 my-5">
+                      <div
+                        className="spinner-border text-primary"
+                        style={{ width: '3rem', height: '3rem' }}
+                        role="status"
+                      >
+                        <span className="visually-hidden">กำลังโหลดข้อมูล...</span>
+                      </div>
+                      <p className="mt-3 text-muted">กำลังโหลดข้อมูล...</p>
                     </div>
                   ) : (
                     <div className="table-responsive">
-                      <table className="table table-striped align-middle">
-                        <thead>
+                      <table className="table table-hover align-middle mb-0">
+                        <thead className="bg-light">
                           <tr>
-                            <th>#</th>
+                            <th className="ps-4">#</th>
                             <th>สมาชิก</th>
                             <th>ชื่อ</th>
                             <th>อีเมล</th>
                             <th>เบอร์</th>
                             <th>ตำแหน่ง</th>
-                            <th>จัดการ</th>
+                            <th className="pe-4 text-end">จัดการ</th>
                           </tr>
                         </thead>
                         <tbody>
                           {users.map((user, index) => (
                             <tr key={index}>
-                              <td>{index + 1}</td>
-                              <td>{user.Username}</td>
+                              <td className="ps-4 fw-medium text-muted">{index + 1}</td>
                               <td>
+                                <span className="badge bg-danger text-danger bg-opacity-10">
+                                  {user.Username}
+                                </span>
+                              </td>
+                              <td className="fw-medium">
                                 {user.Cus_Name || user.Emp_Name} {user.Cus_Lname || user.Emp_Lname}
                               </td>
-                              <td>{user.Cus_Email || user.Emp_Email}</td>
+                              <td>
+                                <a
+                                  href={`mailto:${user.Cus_Email || user.Emp_Email}`}
+                                  className="text-decoration-none link-primary"
+                                >
+                                  {user.Cus_Email || user.Emp_Email}
+                                </a>
+                              </td>
                               <td>{user.Cus_Phone || user.Emp_Phone}</td>
                               <td>
                                 <select
                                   value={user.role}
-                                  className="form-select form-select-sm"
+                                  className="form-select form-select-sm border-primary"
                                   onChange={(e) => handleChangeRole(user.id, user.role, e.target.value)}
                                 >
-                                  <option value="user" disabled={user.role === "user"}>
-                                    User
-                                  </option>
-                                  <option value="admin" disabled={user.role === "admin"}>
-                                    Admin
-                                  </option>
+                                  <option value="user" className="text-success">ผู้ใช้ทั่วไป</option>
+                                  <option value="admin" className="text-danger">ผู้ดูแลระบบ</option>
                                 </select>
                               </td>
-                              <td>
-                                <button className="btn btn-sm btn-danger" onClick={() => handleDelete(user.id, user.role)}>
+                              <td className="pe-4 text-end">
+                                <button
+                                  className="btn btn-sm btn-danger px-3"
+                                  onClick={() => handleDelete(user.id, user.role)}
+                                >
+                                  <i className="fas fa-trash-alt me-2"></i>
                                   ลบ
                                 </button>
                               </td>
@@ -465,81 +539,344 @@ const AdminDashboard = () => {
           )}
 
           {activeTab === "orders" && (
-            <div>
-              <h1 className="mb-4">จัดการการจัดส่งสินค้า</h1>
-              <div className="mb-3">
-                <input
-                  type="text"
-                  className="form-control"
-                  placeholder="ค้นหา (รหัสลูกค้า, ชื่อ, เบอร์, อีเมล, ต้นทาง, ปลายทาง, วันที่)"
-                  value={searchTerm}
-                  onChange={handleSearch}
-                />
+            <div className="container-fluid p-4">
+              {/* Header Section */}
+              <div className="d-flex justify-content-between align-items-center mb-4 border-bottom">
+                <h1 className="h2 fw-bold ">
+                  <i className="fas fa-truck-fast me-3"></i>
+                  จัดการการจัดส่งสินค้า
+                </h1>
               </div>
-              <div className="card shadow-sm">
-                <div className="card-body">
-                  {loading ? (
-                    <div className="text-center my-4">
-                      <div className="spinner-border text-primary" role="status"></div>
-                      <p>กำลังโหลดข้อมูล...</p>
+
+              {/* Receipt Modal */}
+              {selectedOrder && (
+                <div className="receipt-content">
+                  <div className="receipt-header text-center mb-4 border-bottom pb-3">
+                    <h2 className="fw-bold mb-2">
+                      <i className="fas fa-receipt me-2"></i>
+                      ใบรับคำสั่งซื้อ #{selectedOrder?.Order_ID}
+                    </h2>
+                    <small className="text-muted">วันที่ออกใบเสร็จ: {new Date().toLocaleDateString()}</small>
+                  </div>
+
+                  <div className="row mb-4">
+                    <div className="col-md-6">
+                      <h5 className="fw-bold mb-3">ข้อมูลผู้ซื้อ</h5>
+                      <p className="mb-1">
+                        <i className="fas fa-user me-2"></i>
+                        {selectedOrder?.Cus_Name} {selectedOrder?.Cus_Lname}
+                      </p>
+                      <p className="mb-1">
+                        <i className="fas fa-id-card me-2"></i>
+                        ID: {selectedOrder?.Cus_ID}
+                      </p>
                     </div>
-                  ) : (
+                    <div className="col-md-6">
+                      <h5 className="fw-bold mb-3">ข้อมูลติดต่อ</h5>
+                      <p className="mb-1">
+                        <i className="fas fa-phone me-2"></i>
+                        <a href={`tel:${selectedOrder?.Cus_Phone}`} className="text-decoration-none">
+                          {selectedOrder?.Cus_Phone}
+                        </a>
+                      </p>
+                      <p className="mb-1">
+                        <i className="fas fa-envelope me-2"></i>
+                        {selectedOrder?.Cus_Email}
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="row mb-4">
+                    <div className="col-md-6">
+                      <h5 className="fw-bold mb-3">
+                        <i className="fas fa-map-marker-alt me-2"></i>
+                        ต้นทาง
+                      </h5>
+                      <p className="mb-0">{selectedOrder?.Location_From}</p>
+                    </div>
+                    <div className="col-md-6">
+                      <h5 className="fw-bold mb-3">
+                        <i className="fas fa-map-marker-alt me-2"></i>
+                        ปลายทาง
+                      </h5>
+                      <p className="mb-0">{selectedOrder?.Location_To}</p>
+                    </div>
+                  </div>
+
+                  <div className="mb-4">
+                    <h5 className="fw-bold mb-3">รายการสินค้า</h5>
                     <div className="table-responsive">
-                      <table className="table table-striped align-middle">
+                      <table className="table table-bordered">
                         <thead>
                           <tr>
-                            <th>#</th>
-                            <th>หมายเลขออเดอร์</th>
-                            <th>รหัสลูกค้า</th>
-                            <th>ชื่อ</th>
-                            <th>เบอร์</th>
-                            <th>อีเมล</th>
-                            <th>ต้นทาง</th>
-                            <th>ปลายทาง</th>
-                            <th>ระยะทาง</th>
-                            <th>ราคา</th>
-                            <th>วันที่</th>
-                            <th>สถานะ</th>
+                            <th>รายการ</th>
+                            <th className="text-end">จำนวน</th>
+                            <th className="text-end">ราคาต่อหน่วย</th>
+                            <th className="text-end">รวม</th>
                           </tr>
                         </thead>
                         <tbody>
-                          {filteredOrders.map((order, index) => (
-                            <tr key={order.Order_ID}>
-                              <td>{index + 1}</td>
-                              <td>{order.Order_ID}</td>
-                              <td>{order.Cus_ID}</td>
-                              <td>
-                                {order.Cus_Name} {order.Cus_Lname}
-                              </td>
-                              <td>{order.Cus_Phone}</td>
-                              <td>{order.Cus_Email}</td>
-                              <td>{order.Location_From}</td>
-                              <td>{order.Location_To}</td>
-                              <td>{order.Distance} km</td>
-                              <td>{order.Total_Cost} บาท</td>
-                              <td>{new Date(order.Order_Date).toLocaleString()}</td>
-                              <td>
-                                <select
-                                  className={`form-select ${loadingChangeStatus ? "disabled" : ""}`}
-                                  value={order.status}
-                                  onChange={(e) => handleStatusChange(order.Order_ID, e.target.value)}
-                                  disabled={loadingChangeStatus}
-                                >
-                                  <option value="กำลังดำเนินการ">กำลังดำเนินการ</option>
-                                  <option value="รอชำระ">รอชำระ</option>
-                                  <option value="เสร็จสิ้น">เสร็จสิ้น</option>
-                                </select>
-                                {loadingChangeStatus && <span className="text-muted ms-2">กำลังเปลี่ยนสถานะ...</span>}
-                              </td>
-                            </tr>
-                          ))}
+                          <tr>
+                            <td>สินค้าทั่วไป</td>
+                            <td className="text-end">1 ชุด</td>
+                            <td className="text-end">{selectedOrder?.Total_Cost?.toLocaleString()} บาท</td>
+                            <td className="text-end fw-bold">
+                              {selectedOrder?.Total_Cost?.toLocaleString()} บาท
+                            </td>
+                          </tr>
                         </tbody>
                       </table>
                     </div>
-                  )}
-                  {filteredOrders.length === 0 && !loading && (
-                    <p className="text-center mt-3">ไม่พบข้อมูลที่ค้นหา</p>
-                  )}
+                  </div>
+
+                  <div className="row justify-content-end">
+                    <div className="col-md-5">
+                      <div className="table-responsive">
+                        <table className="table table-bordered">
+                          <tbody>
+                            <tr>
+                              <th>ยอดรวมทั้งสิ้น</th>
+                              <td className="text-end fw-bold text-success">
+                                {selectedOrder?.Total_Cost?.toLocaleString()} บาท
+                              </td>
+                            </tr>
+                            <tr>
+                              <th>สถานะการชำระเงิน</th>
+                              <td className="text-end">
+                                <span className={`badge ${selectedOrder?.status === 'เสร็จสิ้น' ? 'bg-success' : 'bg-warning'}`}>
+                                  {selectedOrder?.status}
+                                </span>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="mt-4 text-center">
+                    <button className="btn btn-outline-secondary" onClick={() => window.print()}>
+                      <i className="fas fa-print me-2"></i>
+                      พิมพ์ใบเสร็จ
+                    </button>
+                  </div>
+                </div>
+              )}
+
+              {/* Search Bar */}
+              <div className="mb-4">
+                <div className="input-group input-group-lg shadow-sm">
+                  <span className="input-group-text bg-white border-end-0">
+                    <i className="fas fa-search text-muted"></i>
+                  </span>
+                  <input
+                    type="text"
+                    className="form-control border-start-0"
+                    placeholder="ค้นหาออเดอร์ (รหัสลูกค้า, ชื่อ, เบอร์, อีเมล, ต้นทาง, ปลายทาง, วันที่)"
+                    value={searchTerm}
+                    onChange={handleSearch}
+                  />
+                </div>
+              </div>
+
+              <div className="row g-4">
+                {/* Pending Orders */}
+                <div className="col-lg-6">
+                  <div className="card border-danger shadow-lg">
+                    <div className="card-header bg-danger text-white py-3">
+                      <h3 className="mb-0">
+                        <i className="fas fa-exclamation-circle me-2"></i>
+                        ยังไม่สำเร็จ
+                      </h3>
+                    </div>
+                    <div className="card-body p-0">
+                      {loading ? (
+                        <div className="text-center py-5">
+                          <div className="spinner-border text-primary" style={{ width: '3rem', height: '3rem' }} role="status">
+                            <span className="visually-hidden">กำลังโหลดข้อมูล...</span>
+                          </div>
+                          <p className="mt-3 text-muted">กำลังโหลดข้อมูล...</p>
+                        </div>
+                      ) : (
+                        <div className="table-responsive">
+                          <table className="table table-hover align-middle mb-0">
+                            <thead className="bg-light">
+                              <tr>
+                                <th className="ps-3">#</th>
+                                <th>หมายเลขออเดอร์</th>
+                                <th>ลูกค้า</th>
+                                <th>ติดต่อ</th>
+                                <th className="pe-3">สถานะ</th>
+                                <th className="pe-3">การดำเนินการ</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              {filteredOrders
+                                .filter(order => order.status !== "เสร็จสิ้น")
+                                .map((order, index) => (
+                                  <tr key={order.Order_ID} className="border-start border-3 border-danger">
+                                    <td className="ps-3 fw-medium text-muted">{index + 1}</td>
+                                    <td>
+                                      <span className="badge bg-dark bg-opacity-10 text-dark">
+                                        #{order.Order_ID}
+                                      </span>
+                                    </td>
+                                    <td>
+                                      <div className="d-flex flex-column">
+                                        <span className="fw-medium">{order.Cus_Name} {order.Cus_Lname}</span>
+                                        <small className="text-muted">ID: {order.Cus_ID}</small>
+                                      </div>
+                                    </td>
+                                    <td>
+                                      <a href={`tel:${order.Cus_Phone}`} className="text-decoration-none">
+                                        {order.Cus_Phone}
+                                      </a>
+                                    </td>
+                                    <td className="pe-3">
+                                      <div className="d-flex align-items-center">
+                                        <select
+                                          className={`form-select form-select-sm ${order.status === 'รอชำระ' ? 'border-warning'
+                                            : order.status === 'กำลังดำเนินการ' ? 'border-primary'
+                                              : 'border-success'
+                                            }`}
+                                          value={order.status}
+                                          onChange={(e) => handleStatusChange(order.Order_ID, e.target.value)}
+                                          disabled={loadingChangeStatus}
+                                        >
+                                          <option value="รอชำระ" className="text-warning">
+                                            <i className="fas fa-clock me-2"></i>รอชำระ
+                                          </option>
+                                          <option value="กำลังดำเนินการ" className="text-primary">
+                                            <i className="fas fa-spinner me-2"></i>กำลังดำเนินการ
+                                          </option>
+                                          <option value="เสร็จสิ้น" className="text-success">
+                                            <i className="fas fa-check-circle me-2"></i>เสร็จสิ้น
+                                          </option>
+                                        </select>
+                                        {loadingChangeStatus && (
+                                          <div className="ms-2">
+                                            <span className="spinner-border spinner-border-sm text-muted"></span>
+                                          </div>
+                                        )}
+                                      </div>
+                                    </td>
+                                    <td className="pe-3">
+                                      <button
+                                        className="btn btn-sm btn-outline-secondary"
+                                        data-bs-toggle="modal"
+                                        data-bs-target="#receiptModal"
+                                        onClick={() => setSelectedOrder(order)}
+                                      >
+                                        <i className="fas fa-receipt me-2"></i>
+                                        ดูใบเสร็จ
+                                      </button>
+                                    </td>
+                                  </tr>
+                                ))}
+                            </tbody>
+                          </table>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                </div>
+
+                {/* Completed Orders */}
+                <div className="col-lg-6">
+                  <div className="card border-success shadow-lg">
+                    <div className="card-header bg-success text-white py-3">
+                      <h3 className="mb-0">
+                        <i className="fas fa-check-circle me-2"></i>
+                        สำเร็จแล้ว
+                      </h3>
+                    </div>
+                    <div className="card-body p-0">
+                      {loading ? (
+                        <div className="text-center py-5">
+                          <div className="spinner-border text-primary" style={{ width: '3rem', height: '3rem' }} role="status">
+                            <span className="visually-hidden">กำลังโหลดข้อมูล...</span>
+                          </div>
+                          <p className="mt-3 text-muted">กำลังโหลดข้อมูล...</p>
+                        </div>
+                      ) : (
+                        <div className="table-responsive">
+                          <table className="table table-hover align-middle mb-0">
+                            <thead className="bg-light">
+                              <tr>
+                                <th className="ps-3">#</th>
+                                <th>หมายเลขออเดอร์</th>
+                                <th>ลูกค้า</th>
+                                <th>ติดต่อ</th>
+                                <th className="pe-3">สถานะ</th>
+                                <th className="pe-3">การดำเนินการ</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              {filteredOrders
+                                .filter(order => order.status === "เสร็จสิ้น")
+                                .map((order, index) => (
+                                  <tr key={order.Order_ID} className="border-start border-3 border-success">
+                                    <td className="ps-3 fw-medium text-muted">{index + 1}</td>
+                                    <td>
+                                      <span className="badge bg-dark bg-opacity-10 text-dark">
+                                        #{order.Order_ID}
+                                      </span>
+                                    </td>
+                                    <td>
+                                      <div className="d-flex flex-column">
+                                        <span className="fw-medium">{order.Cus_Name} {order.Cus_Lname}</span>
+                                        <small className="text-muted">ID: {order.Cus_ID}</small>
+                                      </div>
+                                    </td>
+                                    <td>
+                                      <a href={`tel:${order.Cus_Phone}`} className="text-decoration-none">
+                                        {order.Cus_Phone}
+                                      </a>
+                                    </td>
+                                    <td className="pe-3">
+                                      <div className="d-flex align-items-center">
+                                        <select
+                                          className="form-select form-select-sm border-success"
+                                          value={order.status}
+                                          onChange={(e) => handleStatusChange(order.Order_ID, e.target.value)}
+                                          disabled={loadingChangeStatus}
+                                        >
+                                          <option value="รอชำระ" className="text-warning">
+                                            <i className="fas fa-clock me-2"></i>รอชำระ
+                                          </option>
+                                          <option value="กำลังดำเนินการ" className="text-primary">
+                                            <i className="fas fa-spinner me-2"></i>กำลังดำเนินการ
+                                          </option>
+                                          <option value="เสร็จสิ้น" className="text-success">
+                                            <i className="fas fa-check-circle me-2"></i>เสร็จสิ้น
+                                          </option>
+                                        </select>
+                                        {loadingChangeStatus && (
+                                          <div className="ms-2">
+                                            <span className="spinner-border spinner-border-sm text-muted"></span>
+                                          </div>
+                                        )}
+                                      </div>
+                                    </td>
+                                    <td className="pe-3">
+                                      <button
+                                        className="btn btn-sm btn-outline-secondary"
+                                        data-bs-toggle="modal"
+                                        data-bs-target="#receiptModal"
+                                        onClick={() => setSelectedOrder(order)}
+                                      >
+                                        <i className="fas fa-receipt me-2"></i>
+                                        ดูใบเสร็จ
+                                      </button>
+                                    </td>
+                                  </tr>
+                                ))}
+                            </tbody>
+                          </table>
+                        </div>
+                      )}
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>

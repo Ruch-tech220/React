@@ -72,7 +72,7 @@ const Login = () => {
           <div className="overlay-text text-center text-light p-5 position-relative">
             <h1 className="display-4 fw-bold">เข้าสู่ระบบ</h1>
             <p className="lead">
-              ยินดีต้อนรับ! โปรดลงชื่อเข้าใช้เพื่อเข้าถึงระบบขนส่งสินค้า
+              ยินดีต้อนรับ! โปรดลงชื่อเข้าใช้เพื่อเข้าถึงเก้าแสนทรานสปอร์ต
             </p>
           </div>
         </header>
@@ -109,7 +109,7 @@ const Login = () => {
                 </div>
                 <button
                   type="submit"
-                  className="btn btn-primary w-100"
+                  className="btn btn-info w-100"
                   disabled={loading}
                 >
                   {loading ? "กำลังเข้าสู่ระบบ..." : "เข้าสู่ระบบ"}

@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 25, 2024 at 12:54 AM
+-- Generation Time: Feb 18, 2025 at 06:06 PM
 -- Server version: 10.4.32-MariaDB
--- PHP Version: 8.0.30
+-- PHP Version: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -42,10 +42,10 @@ CREATE TABLE `tb_customer` (
 --
 
 INSERT INTO `tb_customer` (`Cus_ID`, `Cus_Name`, `Cus_Lname`, `Username`, `Password`, `Cus_Phone`, `Cus_Email`) VALUES
-(29, '123456789', '123456789', '123456789', '$2b$10$uXrMeZd0bls8GyL6b4f5Ke8g1VNwMn.gahBtL7G/tXPqrAyU78ViW', '123456789', '123456789@gmail.com'),
-(31, 'babe1', 'babe2', 'babe', 'babe12', '123', 'babe@gmail.com'),
-(32, '123456', '123456', '123456', '123456', '123456', '123456@gmail.com'),
-(33, 'zxczxc', 'zxczxc', 'zxczxc', 'zxczxc', '125346', 'zxczxc@gmail.com');
+(46, 'User', 'test', 'User', 'Sutem1', '0888888888', 'cvapp@gmail.com'),
+(55, 'Sutem1', 'Sutem1', 'Sutem1s', 'Sutem1', '0888888887', 'zawzp@gmail.com'),
+(56, 'Sutem1s', 'Sutem1s', 'Sutem1sz', 'Sutem1s', '1237', 'cvappz@gmail.com'),
+(58, 'Sutem1', 'asd', '1234567', 'zxcvasfd', '123', '123456@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -68,10 +68,9 @@ CREATE TABLE `tb_employee` (
 --
 
 INSERT INTO `tb_employee` (`Emp_ID`, `Emp_Name`, `Emp_Lname`, `Username`, `Password`, `Emp_Phone`, `Emp_Email`) VALUES
-(1, 'Alice112z', 'Smith', 'alicesmith', '123456', '0987654321', 'alice.smith@example.com'),
-(2, 'Bob', 'Brown', 'bobbrown', 'mypassword', '0823456789', 'bob.brown@example.com'),
-(3, 'Charlie', 'Davis', 'charliedavis', 'pass1234', '0834567890', 'charlie.davis@example.com'),
-(11, 'Admin', 'Test', 'adminuser', '$2b$10$hashedpassword...', '1234567890', 'admin@test.com');
+(38, 'Bob', 'Brown', 'bobbrown', 'mypassword', '0823456789', 'bob.brown@example.com'),
+(39, 'Admin', 'Sera', 'Admin', 'Admin', '0886042222', 'opas@gmail.com'),
+(45, 'Sutem1', 'Friendly', 'Sutem1', 'Sutem1', '0882945912', 'zawp@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -86,27 +85,31 @@ CREATE TABLE `tb_order` (
   `Cus_Lname` varchar(100) NOT NULL,
   `Cus_Phone` varchar(15) NOT NULL,
   `Cus_Email` varchar(100) NOT NULL,
-  `Location_From` text NOT NULL,
+  `Location_From` varchar(255) DEFAULT 'หนองแค',
   `Location_To` text NOT NULL,
-  `Order_Date` timestamp NOT NULL DEFAULT current_timestamp()
+  `Order_Date` timestamp NOT NULL DEFAULT current_timestamp(),
+  `Distance` int(11) NOT NULL,
+  `Total_Cost` decimal(10,2) NOT NULL,
+  `status` varchar(50) NOT NULL DEFAULT 'รอชำระเงิน'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tb_order`
 --
 
-INSERT INTO `tb_order` (`Order_ID`, `Cus_ID`, `Cus_Name`, `Cus_Lname`, `Cus_Phone`, `Cus_Email`, `Location_From`, `Location_To`, `Order_Date`) VALUES
-(1, 33, 'กรุฟเตฟ', '123456', '1234', '123456@gmail.com', 'กรุฟเตฟ', 'กรุฟเตฟ', '2024-11-21 20:17:39'),
-(2, 33, 'asd', 'asd', '12515426', 'asd@gmail.com', 'asd', 'asd', '2024-11-21 21:09:33'),
-(3, 32, '123456', '123456', '123456', '123456789@gmail.com', '123456', '123456', '2024-11-24 08:29:23'),
-(4, 32, '123456', '123456', '123456', '123456@gmail.com', '123456', '123456', '2024-11-24 08:39:52'),
-(5, 32, '123456', '123456', '123456', '123456@gmail.com', '123456', '123456', '2024-11-24 08:43:18'),
-(6, 32, '123456', '123456', '123456', '123456@gmail.com', '123456', '123456', '2024-11-24 08:43:21'),
-(7, 32, '123456', '123456', '123456', '123456@gmail.com', '123456', '123456', '2024-11-24 08:43:27'),
-(8, 32, 'ๅ/-', 'ๅ/-', 'ๅ/-', 'adwwd@gmaill.com', 'ๅ/-', 'ๅ/-', '2024-11-24 08:44:09'),
-(9, 32, 'ๅ/-', 'ๅ/-', 'ๅ/-', 'adwwd@gmaill.com', 'ๅ/-', 'ๅ/-', '2024-11-24 08:44:11'),
-(10, 32, '1234', '1234', '1234', '123456@gmail.com', '1234', '1234', '2024-11-24 08:48:09'),
-(11, 32, '1234', '1234', '1234', '123456@gmail.com', '1234', '1234', '2024-11-24 08:48:11');
+INSERT INTO `tb_order` (`Order_ID`, `Cus_ID`, `Cus_Name`, `Cus_Lname`, `Cus_Phone`, `Cus_Email`, `Location_From`, `Location_To`, `Order_Date`, `Distance`, `Total_Cost`, `status`) VALUES
+(94, 46, 'Sutem', 'Sutem', '0882945912', '12345@gmail.com', 'หนองแค', 'สระแก้ว, โคกสูง', '2025-02-18 13:51:31', 260, 1350.00, 'เสร็จสิ้น'),
+(108, 46, 'Sutem', 'Sutem', '0882945912', '1234@gmail.com', 'หนองแค', 'พิษณุโลก, บ้านกลาง', '2025-02-18 14:57:39', 480, 2450.00, 'รอชำระ'),
+(109, 46, 'Sutem', 'Sutem', '123456', '123@gmail.com', 'หนองแค', 'สุโขทัย, นาเชือก', '2025-02-18 15:02:12', 470, 2400.00, 'รอชำระ'),
+(111, 46, 'Sutem', 'Sutem', '0882945912', '123456@gmail.com', 'หนองแค', 'ยะลา, ตาเนาะปูเต๊ะ', '2025-02-18 16:24:49', 1030, 5200.00, 'รอชำระ');
+
+--
+-- Triggers `tb_order`
+--
+DELIMITER $$
+CREATE TRIGGER `SetDefaultLocationFrom` BEFORE INSERT ON `tb_order` FOR EACH ROW SET NEW.Location_From = 'หนองแค'
+$$
+DELIMITER ;
 
 --
 -- Indexes for dumped tables
@@ -143,19 +146,19 @@ ALTER TABLE `tb_order`
 -- AUTO_INCREMENT for table `tb_customer`
 --
 ALTER TABLE `tb_customer`
-  MODIFY `Cus_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `Cus_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
 
 --
 -- AUTO_INCREMENT for table `tb_employee`
 --
 ALTER TABLE `tb_employee`
-  MODIFY `Emp_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `Emp_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 
 --
 -- AUTO_INCREMENT for table `tb_order`
 --
 ALTER TABLE `tb_order`
-  MODIFY `Order_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `Order_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=112;
 
 --
 -- Constraints for dumped tables

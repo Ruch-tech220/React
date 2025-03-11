@@ -53,3 +53,38 @@
 .profile-page * {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
+
+.profile-card {
+  max-width: 800px;
+  transition: all 0.3s ease;
+}
+
+.bg-dark-gray {
+  background-color: #2d2d2d;
+}
+
+.bg-light-hover {
+  transition: background-color 0.2s;
+}
+
+.bg-light-hover:hover {
+  background-color: rgba(0, 0, 0, 0.03);
+}
+
+.avatar-wrapper {
+  width: 100px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background-color: rgba(13, 110, 253, 0.1);
+}
+
+.dark-mode .bg-light-hover:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.form-control-lg {
+  padding: 1rem 1.5rem;
+}

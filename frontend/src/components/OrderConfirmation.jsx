@@ -2,7 +2,7 @@ import React, { useState, useContext } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { ThemeContext } from "./ThemeProvider";
-import "../css/OrderConfirmation.css"; 
+import "../css/OrderConfirmation.css";
 import Pic2 from "../assets/images/banner1.WEBP";
 
 const OrderConfirmation = () => {
@@ -37,9 +37,11 @@ const OrderConfirmation = () => {
   const saveOrder = async () => {
     if (isSaving) return;
     setIsSaving(true);
+    setSaveStatus(""); // รีเซ็ตข้อความสถานะก่อนเริ่มบันทึก
+
 
     try {
-      const response = await axios.post("http://localhost:5000/orders", {
+      const payload = {
         Cus_ID: orderData.Cus_ID,
         Cus_Name: orderData.Cus_Name,
         Cus_Lname: orderData.Cus_Lname,
@@ -49,18 +51,24 @@ const OrderConfirmation = () => {
         Location_To: `${orderData.destinationProvince}, ${orderData.destinationDistrict}`,
         Distance: orderData.distance,
         Cost: orderData.cost,
-      });
+        status: "รอชำระ", // Ensure this matches backend expectations
+      };
+
+      console.log("Saving order payload:", payload); // Log the payload
+
+      const response = await axios.post("http://localhost:5000/orders", payload);
 
       if (response.status === 201) {
-        setSaveStatus("คำสั่งซื้อของคุณได้รับการบันทึกแล้ว!");
-        // ตัวอย่าง: ทำ Redirect ไปหน้า Home หลัง 2 วินาที
+        console.log("✅ คำสั่งซื้อถูกบันทึกสำเร็จ:", response.data);
+        setSaveStatus("✅ คำสั่งซื้อของคุณได้รับการบันทึกแล้ว!");
         setTimeout(() => navigate("/home"), 2000);
       } else {
-        setSaveStatus("ไม่สามารถบันทึกคำสั่งซื้อได้");
+        console.error("⚠️ ไม่สามารถบันทึกคำสั่งซื้อได้:", response.status, response.data);
+        setSaveStatus("❌ ไม่สามารถบันทึกคำสั่งซื้อได้");
       }
     } catch (error) {
-      console.error("Failed to save order:", error);
-      setSaveStatus("เกิดข้อผิดพลาดในการบันทึกคำสั่งซื้อ");
+      console.error("❌ เกิดข้อผิดพลาดในการบันทึกคำสั่งซื้อ:", error.response?.data || error.message);
+      setSaveStatus("❌ เกิดข้อผิดพลาดในการบันทึกคำสั่งซื้อ");
     } finally {
       setIsSaving(false);
     }
@@ -68,16 +76,14 @@ const OrderConfirmation = () => {
 
   return (
     <div
-      className={`order-confirmation-page container-fluid p-0 ${
-        isDarkMode ? "dark-mode" : "light-mode"
-      }`}
+      className={`order-confirmation-page container-fluid p-0 ${isDarkMode ? "dark-mode" : "light-mode"
+        }`}
     >
       <div className="main-content">
         {/* Header Section */}
         <header
-          className={`header-section d-flex align-items-center justify-content-center shadow ${
-            isDarkMode ? "dark-mode" : "light-mode"
-          }`}
+          className={`header-section d-flex align-items-center justify-content-center shadow ${isDarkMode ? "dark-mode" : "light-mode"
+            }`}
           style={{
             backgroundImage: `url(${Pic2})`,
             backgroundSize: "cover",
@@ -134,19 +140,22 @@ const OrderConfirmation = () => {
               </div>
 
               <div className="mb-3">
-              <i className="bi bi-cash-coin me-2 text-success"></i>
+                <i className="bi bi-cash-coin me-2 text-success"></i>
                 <strong>ค่าใช้จ่าย:</strong>{" "}
                 {orderData?.cost ? `${orderData.cost} บาท` : "ไม่สามารถคำนวณได้"}
+              </div>
+
+              <div className="mb-3">
+                <strong>สถานะ:</strong> {orderData?.status || "รอชำระ"}
               </div>
 
               {/* แสดงสถานะการบันทึก */}
               {saveStatus && (
                 <div
-                  className={`alert ${
-                    saveStatus.includes("ข้อผิดพลาด")
-                      ? "alert-danger"
-                      : "alert-info"
-                  } text-center`}
+                  className={`alert ${saveStatus.includes("ข้อผิดพลาด")
+                    ? "alert-danger"
+                    : "alert-info"
+                    } text-center`}
                 >
                   {saveStatus}
                 </div>
@@ -159,7 +168,14 @@ const OrderConfirmation = () => {
                 onClick={saveOrder}
                 disabled={isSaving}
               >
-                {isSaving ? "กำลังบันทึก..." : "ยืนยันคำสั่งซื้อ"}
+                {isSaving ? (
+                  <>
+                    <span className="spinner-border spinner-border-sm me-2"></span>
+                    กำลังบันทึก...
+                  </>
+                ) : (
+                  "ยืนยันคำสั่งซื้อ"
+                )}
               </button>
               <button
                 className="btn btn-secondary w-100 mt-2"
@@ -179,7 +195,7 @@ const OrderConfirmation = () => {
       </div>
     </div>
   );
-  
+
 };
 
 export default OrderConfirmation;

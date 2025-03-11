@@ -31,7 +31,7 @@ const Navbar = () => {
             className="me-2 rounded-circle"
             style={{ width: "50px", height: "50px" }}
           />
-          <span className="fw-bold">ระบบขนส่งสินค้า</span>
+          <span className="fw-bold">เก้าแสนทรานสปอร์ต</span>
         </Link>
         <button
           className="navbar-toggler"

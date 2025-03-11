@@ -265,7 +265,7 @@ const Services = () => {
 
               <button
                 type="submit"
-                className="btn btn-primary w-100 mt-3"
+                className="btn btn-info w-100 mt-3"
                 disabled={loading}
               >
                 {loading ? "กำลังดำเนินการ..." : "ส่งคำสั่งซื้อ"}

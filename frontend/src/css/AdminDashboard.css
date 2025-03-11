@@ -4,6 +4,107 @@
   color: #212529;
 }
 
+.receipt-content {
+  background-color: #ffffff;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.receipt-header {
+  font-family: 'Arial', sans-serif;
+  color: #333;
+}
+
+.receipt-header h2 {
+  font-size: 24px;
+  color: #007bff;
+}
+
+.receipt-header small {
+  font-size: 14px;
+  color: #777;
+}
+
+.row {
+  margin-bottom: 20px;
+}
+
+.fw-bold {
+  font-weight: bold;
+}
+
+.table {
+  width: 100%;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  margin-top: 15px;
+}
+
+.table th, .table td {
+  padding: 12px;
+  text-align: right;
+}
+
+.table th {
+  background-color: #f8f9fa;
+}
+
+.table td {
+  background-color: #ffffff;
+}
+
+.table-responsive {
+  overflow-x: auto;
+}
+
+.badge {
+  padding: 5px 10px;
+  font-size: 14px;
+}
+
+.badge.bg-success {
+  background-color: #28a745;
+}
+
+.badge.bg-warning {
+  background-color: #ffc107;
+}
+
+.text-end {
+  text-align: right;
+}
+
+.text-success {
+  color: #28a745;
+}
+
+.text-muted {
+  color: #6c757d;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.btn-outline-secondary {
+  border: 1px solid #6c757d;
+  color: #6c757d;
+  padding: 10px 20px;
+  font-size: 14px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.btn-outline-secondary:hover {
+  background-color: #f8f9fa;
+}
+
+.fas {
+  font-size: 16px;
+}
+
+
 .admin-dashboard.dark-mode {
   background-color: #2d2d2d;
   color: #f8f9fa;
@@ -69,4 +170,58 @@
 /* Transition กับทุก element */
 .admin-dashboard * {
   transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.table-hover tbody tr:hover {
+  background-color: #f8f9fa;
+}
+
+.border-primary:focus {
+  border-color: #0d6efd;
+  box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+}
+
+.bg-light {
+  background-color: #f8fafc !important;
+}
+
+.modal-content {
+  border-radius: 1rem;
+}
+
+.table-hover tbody tr:hover {
+  background-color: #f8fafc;
+}
+
+.bg-light {
+  background-color: #f8fafc !important;
+}
+
+.link-primary {
+  transition: color 0.2s;
+}
+
+.link-primary:hover {
+  color: #0a58ca !important;
+}
+
+.table-hover tbody tr:hover {
+  background-color: #f8fafc !important;
+}
+
+.border-danger {
+  border-color: #dc354545 !important;
+}
+
+.border-success {
+  border-color: #19875445 !important;
+}
+
+.badge.bg-dark {
+  background-color: rgba(0, 0, 0, 0.05) !important;
+  color: #333 !important;
+}
+
+.form-select-sm {
+  min-width: 140px;
 }
